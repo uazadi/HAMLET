@@ -1,15 +1,17 @@
 #/usr/bin/python
 import string
-import math
+import numpy as np
 from ghmm import *
 
 # ASCII character
 chars = list(string.printable)
 # Create the HMM Matrix
-PossibleObservation = IntegerRange(1, len(chars))
+PossibleObservation = IntegerRange(0, len(chars))
+print(PossibleObservation)
+
 
 def createMatrix(numRows, numColumn):
-    value =  1 / float(numRows)
+    value = (1 / float(numRows))
     matrix = [value] * numRows
     if numColumn > 1:
         for i in range(numRows):
@@ -17,10 +19,9 @@ def createMatrix(numRows, numColumn):
     return matrix
 
 def initializeHMM():
-    TransitionMatrix = createMatrix(len(chars)-1, len(chars)-1)
-    EmissionMatrix = createMatrix(len(chars)-1, len(chars)-1)
-    InitialProbabilities = createMatrix(len(chars)-1, 1)
-
+    TransitionMatrix = createMatrix(len(chars), len(chars))
+    EmissionMatrix = createMatrix(len(chars), len(chars))
+    InitialProbabilities = createMatrix(len(chars), 1)
     m = HMMFromMatrices(PossibleObservation,
                         DiscreteDistribution(PossibleObservation),
                         TransitionMatrix,
@@ -36,10 +37,19 @@ def textToObs(tweet):
     return obs
 
 def trainHMM(hmm, trainingSet):
+    count = 0
+    obss = []
     for line in trainingSet:
-        obs = EmissionSequence(PossibleObservation, textToObs(line))
-        #ghmmwrapper.EPS_ITER_BW = 0
-        hmm.baumWelch(obs)
+        print(line)
+        print(textToObs(line))
+        obss.extend(textToObs(line))
+
+    obs = EmissionSequence(PossibleObservation, obss)
+    #ghmmwrapper.EPS_ITER_BW = 0
+    hmm.baumWelch(obs)
+    #if count >= 0:
+        #break
+    count = count + 1
     return hmm
 
 
@@ -47,4 +57,4 @@ hmm = initializeHMM()
 print(hmm)
 trainingSet = open("NASA_tweets.csv", 'r')
 trainHMM(hmm, trainingSet)
-print(hmm)
+print(hmm.write("/home/umberto/Desktop/output.txt"))

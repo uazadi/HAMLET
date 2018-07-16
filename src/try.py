@@ -16,7 +16,7 @@ obs = EmissionSequence(obs_states, [2, 1, 2])
 
 print(states)
 print states.__str__().replace("0", "climb").replace("1", "not climb")
-print math.exp(prob) # N.B. prob = log_e(actual_prob)
+print prob # N.B. prob = log_e(actual_prob)
 
 print "-------------------------------------------------------------------------------------"
 #-----------------------------------------------------------------------------Forward test
