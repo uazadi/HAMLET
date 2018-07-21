@@ -65,33 +65,23 @@ def setUpHMM(numOfChars):
     return model
 
 # Load the training file and extract the vocubulary
-fileName = "small_NASA.txt"
+fileName = "training_sets/TrainingSet.txt"
 trainingFile = open(fileName, 'r')
+
+print("Creating the vocabulary...")
 #chars = getVocabulary(trainingFile)
 chars = list(string.ascii_lowercase + string.ascii_uppercase)
 trainingFile = open(fileName, 'r')
+
+print("Loading training set...")
 trainingSet = getTrainingSet(trainingFile, chars)
 
 model = setUpHMM(len(chars))
 
-output = open('./HMM_description.txt', 'w+')
-
-#print("Printing untrained HMM...")
-#output.write('Untrained HMM:\n\n')
-#printHMM(model, output)
-
-print(trainingSet)
-
 print("Training HMM...")
 for tweet in trainingSet:
-    print(tweet)
+    print 1 + "/" + len(trainingSet)
     model.fit(tweet)
-
-#print("Printing trained HMM...")
-#output.write('\n\nTrained HMM:\n\n')
-#printHMM(model, output)
 
 print("Saving HMM...")
 joblib.dump(model, "Saved_HMM.pkl")
-
-output.close()
