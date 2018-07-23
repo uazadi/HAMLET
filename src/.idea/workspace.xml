@@ -11,13 +11,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HMMlearnTry.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HMMlearnTry.py">
+      <file leaf-file-name="NASA_tweets.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/training_sets/NASA_tweets.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="82" column="36" lean-forward="true" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
+            <state>
+              <caret selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HMMTrainer.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HMMTrainer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-column="16" />
               <folding>
                 <element signature="e#17#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TrainingFileCreator.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TrainingFileCreator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-180">
+              <caret column="2" selection-start-column="2" selection-end-column="2" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VocabularyExtractor.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/VocabularyExtractor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="78" selection-start-line="6" selection-start-column="78" selection-end-line="6" selection-end-column="78" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -26,15 +59,19 @@
       <file leaf-file-name="TweetDownloader.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TweetDownloader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="885">
-              <caret line="60" column="30" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
+            <state relative-caret-position="375">
+              <caret line="26" column="46" lean-forward="true" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TrainingSet.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/training_sets/TrainingSet.txt">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file leaf-file-name="small_NASA.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/training_sets/small_NASA.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -58,6 +95,9 @@
       <find>°</find>
       <find>q</find>
       <find>[newline]</find>
+      <find>inviting</find>
+      <find>lunar</find>
+      <find>http</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -72,8 +112,16 @@
         <option value="$PROJECT_DIR$/small_NASA.txt" />
         <option value="$PROJECT_DIR$/BarackObama_tweets.csv" />
         <option value="$PROJECT_DIR$/tweepy_try3.py" />
-        <option value="$PROJECT_DIR$/TweetDownloader.py" />
         <option value="$PROJECT_DIR$/HMMlearnTry.py" />
+        <option value="$PROJECT_DIR$/training_sets/NASA_tweets.csv" />
+        <option value="$PROJECT_DIR$/HMMTrainer.py" />
+        <option value="$PROJECT_DIR$/HMMUser.py" />
+        <option value="$PROJECT_DIR$/CustomHMMTrainer.py" />
+        <option value="$PROJECT_DIR$/TweetDownloader.py" />
+        <option value="$PROJECT_DIR$/training_sets/small_NASA.txt" />
+        <option value="$PROJECT_DIR$/training_sets/VocabularyExtractor.py" />
+        <option value="$PROJECT_DIR$/TrainingFileCreator.py" />
+        <option value="$PROJECT_DIR$/VocabularyExtractor.py" />
       </list>
     </option>
   </component>
@@ -114,6 +162,11 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/ThirdProject" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -126,7 +179,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.HMMlearnTry">
+  <component name="RunManager" selected="Python.VocabularyExtractor">
+    <configuration name="HMMUser" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="src" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HMMUser.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="HMMlearnTry" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="src" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -139,13 +210,13 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HMMlearnTry.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HMMTrainer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="HmmTrainer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="TrainingFileCreator" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="src" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -157,13 +228,13 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HmmTrainer.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TrainingFileCreator.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="hmmlearn_try" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="VocabularyExtractor" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="src" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -171,29 +242,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/training_sets" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/hmmlearn_try.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="try" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="src" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/try.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/VocabularyExtractor.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -218,19 +271,19 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list>
-      <item itemvalue="Python.try" />
-      <item itemvalue="Python.HmmTrainer" />
       <item itemvalue="Python.HMMlearnTry" />
-      <item itemvalue="Python.hmmlearn_try" />
       <item itemvalue="Python.tweepy_try3" />
+      <item itemvalue="Python.HMMUser" />
+      <item itemvalue="Python.TrainingFileCreator" />
+      <item itemvalue="Python.VocabularyExtractor" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.VocabularyExtractor" />
+        <item itemvalue="Python.TrainingFileCreator" />
         <item itemvalue="Python.HMMlearnTry" />
+        <item itemvalue="Python.HMMUser" />
         <item itemvalue="Python.tweepy_try3" />
-        <item itemvalue="Python.HmmTrainer" />
-        <item itemvalue="Python.hmmlearn_try" />
-        <item itemvalue="Python.try" />
       </list>
     </recent_temporary>
   </component>
@@ -249,13 +302,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.6430834" />
+      <window_info anchor="bottom" id="Python Console" order="7" weight="0.32946146" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4287223" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -278,61 +332,24 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/hmmlearn_try.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/modhmmer.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/HMMlearnTry.py">
+    <entry file="file://$PROJECT_DIR$/HMMTrainer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="47" column="26" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
+        <state relative-caret-position="510">
+          <caret line="37" column="67" selection-start-line="37" selection-start-column="67" selection-end-line="37" selection-end-column="67" />
           <folding>
             <element signature="e#17#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/try.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HmmTrainer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="57" selection-start-line="57" selection-end-line="57" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plot_hmm_sampling.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="39" column="16" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NASA_tweets.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="167" selection-start-line="22" selection-start-column="167" selection-end-line="22" selection-end-column="167" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="76" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/try.py" />
+    <entry file="file://$PROJECT_DIR$/HmmTrainer.py" />
+    <entry file="file://$PROJECT_DIR$/plot_hmm_sampling.py" />
+    <entry file="file://$PROJECT_DIR$/NASA_tweets.csv" />
+    <entry file="file://$PROJECT_DIR$/train.txt" />
     <entry file="file:///usr/local/lib/python2.7/dist-packages/ghmmwrapper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="14805">
@@ -349,7 +366,7 @@
     <entry file="file:///usr/local/lib/python2.7/dist-packages/modhmmer.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/HMMlearnTry.py">
+    <entry file="file://$PROJECT_DIR$/HMMTrainer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="37" column="67" selection-start-line="37" selection-start-column="67" selection-end-line="37" selection-end-column="67" />
@@ -359,95 +376,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/try.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HmmTrainer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="57" selection-start-line="57" selection-end-line="57" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plot_hmm_sampling.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="39" column="16" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NASA_tweets.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="167" selection-start-line="22" selection-start-column="167" selection-end-line="22" selection-end-column="167" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="76" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/lib/python2.7/dist-packages/ghmmwrapper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14805">
-          <caret line="987" column="22" selection-start-line="987" selection-start-column="18" selection-end-line="987" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/lib/python2.7/dist-packages/ghmmhelper.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file:///usr/local/lib/python2.7/dist-packages/ObjectHMM.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file:///usr/local/lib/python2.7/dist-packages/modhmmer.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HMMlearnTry.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="37" column="67" selection-start-line="37" selection-start-column="67" selection-end-line="37" selection-end-column="67" />
-          <folding>
-            <element signature="e#17#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/try.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1185">
-          <caret line="79" column="31" selection-start-line="79" selection-start-column="31" selection-end-line="79" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HmmTrainer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NASA_tweets.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="305" lean-forward="true" selection-end-line="23" selection-end-column="305" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/try.py" />
+    <entry file="file://$PROJECT_DIR$/HmmTrainer.py" />
+    <entry file="file://$PROJECT_DIR$/NASA_tweets.csv" />
+    <entry file="file://$PROJECT_DIR$/train.txt" />
     <entry file="file://$PROJECT_DIR$/TweetDownloader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="870">
@@ -492,107 +424,125 @@
     <entry file="file:///usr/local/lib/python2.7/dist-packages/ObjectHMM.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/plot_hmm_sampling.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="39" column="16" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/plot_hmm_sampling.py" />
     <entry file="file:///usr/local/lib/python2.7/dist-packages/ghmmhelper.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/NASA_tweets.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="1000" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/NASA_tweets.csv" />
     <entry file="file://$PROJECT_DIR$/Saved_HMM.pkl">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/train.txt">
+    <entry file="file://$PROJECT_DIR$/train.txt" />
+    <entry file="file://$PROJECT_DIR$/hmmlearn_try.py" />
+    <entry file="file://$PROJECT_DIR$/small_NASA.txt" />
+    <entry file="file://$PROJECT_DIR$/HmmTrainer.py" />
+    <entry file="file://$PROJECT_DIR$/try.txt" />
+    <entry file="file://$PROJECT_DIR$/try.py" />
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/modhmmer.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HMM_description.txt" />
+    <entry file="file://$PROJECT_DIR$/BarackObama_tweets.csv" />
+    <entry file="file://$USER_HOME$/.local/lib/python2.7/site-packages/IPython/core/interactiveshell.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="46" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
+        <state relative-caret-position="202">
+          <caret line="2877" selection-start-line="2877" selection-end-line="2877" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hmmlearn_try.py">
+    <entry file="file://$PROJECT_DIR$/training_sets/NASA_tweets.csv" />
+    <entry file="file://$PROJECT_DIR$/training_sets/TrainingSet.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+        <state relative-caret-position="15">
+          <caret line="1" column="74" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HMMUser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="41" column="51" selection-start-line="41" selection-start-column="51" selection-end-line="41" selection-end-column="51" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#17#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/small_NASA.txt">
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.1/system/python_stubs/348993582/__builtin__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="193" selection-start-line="8" selection-start-column="193" selection-end-line="8" selection-end-column="193" />
+        <state relative-caret-position="171">
+          <caret line="4135" column="8" selection-start-line="4135" selection-start-column="8" selection-end-line="4135" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HmmTrainer.py">
+    <entry file="file://$PROJECT_DIR$/training_sets/CNN_tweets.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="3" column="18" lean-forward="true" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+        <state relative-caret-position="105">
+          <caret line="7" column="103" lean-forward="true" selection-start-line="7" selection-start-column="103" selection-end-line="7" selection-end-column="103" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/try.txt">
+    <entry file="file://$PROJECT_DIR$/CustomHMMTrainer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="1" lean-forward="true" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
+        <state relative-caret-position="135">
+          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/try.py">
+    <entry file="file://$PROJECT_DIR$/training_sets/NASA_tweets.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="16" selection-start-column="16" selection-end-column="16" />
+          <caret selection-end-line="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/lib/python2.7/dist-packages/modhmmer.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training_sets/NASA_tweets.csv">
+    <entry file="file://$PROJECT_DIR$/training_sets/TrainingFile.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HMM_description.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BarackObama_tweets.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-25837">
-          <caret column="115" selection-start-column="115" selection-end-column="115" />
+        <state relative-caret-position="225">
+          <caret line="15" column="246" lean-forward="true" selection-start-line="15" selection-start-column="246" selection-end-line="15" selection-end-column="246" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TweetDownloader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="60" column="30" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
+        <state relative-caret-position="375">
+          <caret line="26" column="46" lean-forward="true" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/training_sets/TrainingSet.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HMMlearnTry.py">
+    <entry file="file://$PROJECT_DIR$/HMMTrainer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="82" column="36" lean-forward="true" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
+        <state>
+          <caret selection-end-column="16" />
           <folding>
             <element signature="e#17#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training_sets/small_NASA.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TrainingFileCreator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180">
+          <caret column="2" selection-start-column="2" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VocabularyExtractor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="78" selection-start-line="6" selection-start-column="78" selection-end-line="6" selection-end-column="78" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>

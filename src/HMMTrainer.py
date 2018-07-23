@@ -16,6 +16,17 @@ def getVocabulary(file):
 
     return voc
 
+def getVocabulary2(file):
+    voc = []
+    for line in file:
+        voc.extend(str(line).split(" "))
+
+    voc = list(set(voc))
+
+    print [(i, voc[i]) for i in range(0, len(voc))]
+
+    return voc
+
 
 def createMatrix(numRows, numColumn):
     value = (1 / float(numRows))
@@ -27,7 +38,7 @@ def createMatrix(numRows, numColumn):
 
 
 def textToObs(tweet, voc):
-    obs = list(filter(lambda x: x in voc, tweet))
+    obs = tweet.split(" ")
     for i in range(0, len(obs)):
         obs[i] = [voc.index(obs[i])]
     return obs
@@ -38,11 +49,16 @@ def getTrainingSet(trainingSet, voc):
     tmpvoc = voc[:]
     tmp_tweet = []
     for line in trainingSet:
-        linevoc = [char for char in line]
+        linevoc = line.split(" ")
         linevoc = list(set(linevoc))
         tmpvoc = [x for x in tmpvoc if x not in linevoc]
+        #print "\t" + str(linevoc) + "\n\t\t" + str(tmpvoc)
 
         #print(tmp_tweet)
+
+        print line
+        print line.split(" ")
+        print textToObs(line, voc)
 
         if len(tmpvoc) == 0:
             tmp_tweet.extend(textToObs(line, voc))
@@ -65,12 +81,12 @@ def setUpHMM(numOfChars):
     return model
 
 # Load the training file and extract the vocubulary
-fileName = "training_sets/TrainingSet.txt"
+fileName = "training_sets/small_NASA.txt"
 trainingFile = open(fileName, 'r')
 
 print("Creating the vocabulary...")
-#chars = getVocabulary(trainingFile)
-chars = list(string.ascii_lowercase + string.ascii_uppercase)
+chars = getVocabulary2(trainingFile)
+#chars = list(string.ascii_lowercase + string.ascii_uppercase + " " + "0123456789")
 trainingFile = open(fileName, 'r')
 
 print("Loading training set...")
@@ -78,10 +94,15 @@ trainingSet = getTrainingSet(trainingFile, chars)
 
 model = setUpHMM(len(chars))
 
+
+print trainingSet
+
 print("Training HMM...")
+i = 1
 for tweet in trainingSet:
-    print 1 + "/" + len(trainingSet)
+    print str(i) + "/" + str(len(trainingSet)) + "   [tweet len: " + str(len(tweet)) + " ]"
     model.fit(tweet)
+    i = i + 1
 
 print("Saving HMM...")
-joblib.dump(model, "Saved_HMM.pkl")
+joblib.dump(model, "Saved_HMM_short.pkl")

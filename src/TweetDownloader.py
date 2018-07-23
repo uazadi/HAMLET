@@ -53,7 +53,7 @@ def get_tweets(screen_name, num_of_tweet):
                 text = text.replace('\n', '')
                 outtweets.insert(len(outtweets), text)
 
-    # write the csv
+    # write the txt
     with open('training_sets/%s_tweets.txt' % screen_name, 'wb') as f:
         for string in outtweets:
             f.write(string + "\n")
