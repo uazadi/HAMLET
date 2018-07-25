@@ -1,7 +1,8 @@
 import TrainingFileCreator
 import VocabularyExtractor
-import re
+import TweetChecker
 import string
+from ghmm import *
 
 alphabet = list(VocabularyExtractor.alphabet)
 printable = list(string.printable)
@@ -59,30 +60,44 @@ def get_emission_matrix(training_file_name):
     return matrix
 
 
-if __name__ == '__main__':
-    file_name = "/home/umberto/Documents/HMMTweetChecker/src/training_sets/small_NASA.txt"
-    tweet_file = open(file_name, 'r')
-    trainingFileName = TrainingFileCreator.createTrainingFile(tweet_file, 0.1)
-    tweet_file = open(file_name, 'r')
-    vocabulary = VocabularyExtractor.getVocabulary(tweet_file)
-
-    #print(vocabulary)
-
+def print_stuff():
+    print(vocabulary)
     t = get_transition_matrix(vocabulary)
     print "lenght transition: " + str(len(t))
     for i in range(0, len(t[0])):
         print str(alphabet[i]) + " -> " + str(t[i])
-
     print("\n\n\n\n")
-
     o = get_emission_matrix(trainingFileName)
     print "lenght emission: " + str(len(o[0]))
     for i in range(0, len(o)):
         print str(alphabet[i]) + " -> " + str(o[i])
-
     print("\n\n\n\n")
-
     print get_initial_probabilities(vocabulary)
+
+
+if __name__ == '__main__':
+    file_name = "/home/umberto/Documents/HMMTweetChecker/src/training_sets/DownloadedTweet.txt"
+    tweet_file = open(file_name, 'r')
+    trainingFileName = TrainingFileCreator.createTrainingFile(tweet_file, 0.05)
+    tweet_file = open(file_name, 'r')
+    vocabulary = VocabularyExtractor.getVocabulary(tweet_file)
+
+    #print_stuff()
+    print alphabet
+    print [(i, alphabet[i]) for i in range(0, len(alphabet))]
+
+    obs_states = IntegerRange(1, len(printable)+1)  # Range of the observation.
+    # N.B. the upper limit is not part of a range.
+    A = get_transition_matrix(vocabulary)
+    B = get_emission_matrix(trainingFileName)
+    pi = get_initial_probabilities(vocabulary)
+    m = HMMFromMatrices(obs_states, DiscreteDistribution(obs_states), A, B, pi)
+
+
+    #test = "The Justice 0epartment is apEe4liYg the approval"
+    test = "ment"
+
+    print TweetChecker.check(test, m, obs_states, vocabulary)
 
 
 

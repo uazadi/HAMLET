@@ -73,7 +73,7 @@ if __name__ == '__main__':
     file3 = get_tweets("CNN", 2000)
 
     filenames = [file1, file2, file3]
-    with open('training_sets/TrainingSet.txt', 'wb') as outfile:
+    with open('training_sets/DownloadedTweet.txt', 'wb') as outfile:
         for fname in filenames:
             with open(fname) as infile:
                 outfile.write(infile.read())
