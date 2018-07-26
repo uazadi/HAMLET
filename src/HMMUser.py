@@ -5,7 +5,7 @@ import numpy as np
 from sklearn.externals import joblib
 
 
-model = joblib.load("Saved_HMM_short.pkl")
+model = joblib.load("Saved_HMM.pkl")
 
 def obs_to_text(obs, voc):
     #text = list(filter(lambda x: x in voc, tweet))
@@ -15,11 +15,13 @@ def obs_to_text(obs, voc):
     return text
 
 def text_to_obs(tweet, voc):
-    #obs = list(filter(lambda x: x in voc, tweet))
-    obs = tweet.split(" ")
+    obs = list(filter(lambda x: x in voc, tweet))
+    print obs
+    #obs = tweet.split(" ")
     for i in range(0, len(obs)):
         obs[i] = [voc.index(obs[i])]
     return obs
+
 
 def getVocabulary(file):
     text = ""
@@ -50,9 +52,10 @@ trainingFile = open(fileName, 'r')
 
 print("Creating the vocabulary...")
 #chars = list(string.ascii_lowercase + string.ascii_uppercase + " " + "0123456789")
-chars = getVocabulary2(trainingFile)
+chars = getVocabulary(trainingFile)
 #chars = list(string.ascii_lowercase + string.ascii_uppercase)
 X = text_to_obs("when the very first humans stepped foot on the Moon", chars)
+print X
 
 logprob, state_sequence = model.decode(X, algorithm="viterbi")
 logprob = round(np.exp(logprob), 5)

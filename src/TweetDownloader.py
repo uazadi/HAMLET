@@ -64,13 +64,13 @@ def get_tweets(screen_name, num_of_tweet):
 if __name__ == '__main__':
 
     print "Downloading BarackObama tweet...."
-    file1 = get_tweets("BarackObama", 2000)
+    file1 = get_tweets("BarackObama", 5000)
 
     print "Downloading NASA tweet...."
-    file2 = get_tweets("NASA", 2000)
+    file2 = get_tweets("NASA", 5000)
 
     print "Downloading CNN tweet...."
-    file3 = get_tweets("CNN", 2000)
+    file3 = get_tweets("CNN", 5000)
 
     filenames = [file1, file2, file3]
     with open('training_sets/DownloadedTweet.txt', 'wb') as outfile:

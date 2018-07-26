@@ -5,8 +5,8 @@ import string
 from ghmm import *
 
 alphabet = list(VocabularyExtractor.alphabet)
-printable = list(string.printable)
-
+printable = alphabet
+#printable = list(string.printable)
 
 def get_initial_probabilities(voc):
     vector = [1] * len(alphabet)
@@ -56,7 +56,11 @@ def get_emission_matrix(training_file_name):
     training.close()
 
     for i in range(0, len(matrix)):
-        matrix[i] = [float(j) / sum(matrix[i]) for j in matrix[i]]
+        den = sum(matrix[i])
+        #if matrix[i][i] > den*0.5:
+         #   matrix[i][i] = den*0.5
+        matrix[i] = [float(j) / den for j in matrix[i]]
+
     return matrix
 
 
@@ -76,28 +80,35 @@ def print_stuff():
 
 
 if __name__ == '__main__':
+
     file_name = "/home/umberto/Documents/HMMTweetChecker/src/training_sets/DownloadedTweet.txt"
-    tweet_file = open(file_name, 'r')
-    trainingFileName = TrainingFileCreator.createTrainingFile(tweet_file, 0.05)
-    tweet_file = open(file_name, 'r')
-    vocabulary = VocabularyExtractor.getVocabulary(tweet_file)
+    voc_file_name ="/home/umberto/Documents/HMMTweetChecker/src/Vocabulary.txt"
 
-    #print_stuff()
-    print alphabet
-    print [(i, alphabet[i]) for i in range(0, len(alphabet))]
+    tweet_file = open(file_name, 'r')
+    trainingFileName = TrainingFileCreator.createTrainingFile(tweet_file, 0.2)
 
-    obs_states = IntegerRange(1, len(printable)+1)  # Range of the observation.
+    tweet_file = open(file_name, 'r')
+    voc_file = open(voc_file_name, 'r')
+    vocabulary = VocabularyExtractor.getVocabulary(tweet_file, voc_file)
+
+    print_stuff()
+    #print alphabet
+    #print [(i, alphabet[i]) for i in range(0, len(alphabet))]
+
+    obs_states = IntegerRange(1, len(printable)+1)
     # N.B. the upper limit is not part of a range.
     A = get_transition_matrix(vocabulary)
     B = get_emission_matrix(trainingFileName)
     pi = get_initial_probabilities(vocabulary)
     m = HMMFromMatrices(obs_states, DiscreteDistribution(obs_states), A, B, pi)
 
+    # Test for completly random extraction
+    test = "Authurities aoe inveNtmgating afteroan kCEzdetaVnee facing pos7ible deportation apparentky kBlledFhimself "
 
-    #test = "The Justice 0epartment is apEe4liYg the approval"
-    test = "ment"
+    # Test for qwerty sample
+    test = "Hap0y ValDntGnes DaY @MiXhelKeObama You jAkeBSv3ryDdaY and eveGy place bet5er"
 
-    print TweetChecker.check(test, m, obs_states, vocabulary)
+    print TweetChecker.dull_check(test, m, obs_states, vocabulary)
 
 
 
