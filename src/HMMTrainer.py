@@ -110,7 +110,7 @@ if __name__ == '__main__':
 
     print HMMTrainer(file_name, voc_name).hmm
 
-    print HMMFile.load("/home/umberto/Documents/HMMTweetChecker/src/HMM_8/")
+    print HMMFile.load("/home/umberto/Documents/HMMTweetChecker/src/HMM/")
 
 
 
