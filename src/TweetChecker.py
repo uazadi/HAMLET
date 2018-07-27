@@ -1,29 +1,33 @@
 import VocabularyExtractor
-import CustomHMMTrainer
+import GlobalVar
 from ghmm import *
 
-printable = CustomHMMTrainer.printable
-alphabet = list(VocabularyExtractor.alphabet)
+printable = GlobalVar.observable
+alphabet = list(GlobalVar.alphabet)
 
-def check(tweet, hmm, obs_states, voc):
+
+def one_try_check(tweet, model, obs_states, voc):
     new_tweet = ""
     for word in str(tweet).split(" "):
         word = word + " "
         if not(word in voc):
             chars = list(word)
-            obs = [printable.index(c)+1 for c in chars]#<<<<<<<<<<<<<<<<<
+            obs = [printable.index(c)+1 for c in chars]
             obs_seq = EmissionSequence(obs_states, obs)
-            [states, prob] = hmm.viterbi(obs_seq)
+            [states, prob] = model.viterbi(obs_seq)
             new_chars = [alphabet[o] for o in states]
             new_word = ''.join(new_chars)
             new_tweet = new_tweet + " " + new_word
 
-            print word + " " + str(obs) + " -> " + new_word + " " + str(states) + "        with prob: " + str(math.exp(prob))
+            print word + " " + str(obs) + " -> " \
+                  + new_word + " " + str(states) \
+                  + " | with prob: " + str(math.exp(prob))
         else:
             new_tweet = new_tweet + " " + word
     return new_tweet
 
-def dull_check(tweet, hmm, obs_states, voc):
+
+def dull_check(tweet, model, obs_states, voc):
     new_tweet = ""
     for word in str(tweet).split(" "):
         word = word + " "
@@ -33,19 +37,20 @@ def dull_check(tweet, hmm, obs_states, voc):
             old_word = word
 
             chars = list(word)
-            obs = [printable.index(c)+1 for c in chars]#<<<<<<<<<<<<<<<<<
+            obs = [printable.index(c)+1 for c in chars]
             obs_seq = EmissionSequence(obs_states, obs)
-            [states, prob] = hmm.viterbi(obs_seq)
+            [states, prob] = model.viterbi(obs_seq)
             new_chars = [alphabet[o] for o in states]
             word = ''.join(new_chars)
-            #new_tweet = new_tweet + " " + word
 
             if(word == old_word):
                 count = count + 1
             else:
                 count = 0
 
-            print old_word + " " + str(obs) + " -> " + word + " " + str(states) + " | with prob: " + str(math.exp(prob))
+            print old_word + " " + str(obs) + " -> " \
+                  + word + " " + str(states) \
+                  + " | with prob: " + str(math.exp(prob))
 
         new_tweet = new_tweet + word
 

@@ -1,9 +1,8 @@
 #!/usr/bin/python
 import re
-import string
+import GlobalVar
 
-#alphabet = set(string.ascii_letters + string.digits + '!"*$%&/()=?^' + "'|[]{}@#+;:*,.-;:_<>" + ' ')
-alphabet = set(string.ascii_letters + string.digits + ' ' + '#' + '@' + "'")
+alphabet = GlobalVar.alphabet
 
 def parse(line):
     line = re.sub('https?:[A-Za-z0-9/\.]+', '', line)
