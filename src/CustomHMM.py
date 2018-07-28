@@ -7,13 +7,13 @@ observable = GlobalVar.observable
 
 class CustomHMM:
     def __init__(self,
-                 model,
+                 hmm,
                  transition_matrix,
                  emission_matrix,
                  initial_probabilities,
                  obs_states,
                  vocabulary):
-        self.model = model
+        self.hmm = hmm
         self.transition_matrix = transition_matrix
         self.emission_matrix = emission_matrix
         self.initial_probabilities = initial_probabilities
@@ -73,7 +73,6 @@ class CustomHMM:
         if folder is None:
             i = 1
             path = '/home/umberto/Documents/HMMTweetChecker/src'
-            #folder = os.path.join(path,'/HMM/')
             folder = path + '/HMM/'
             while os.path.exists(folder):
                 folder = path + '/HMM_' + str(i) + '/'
@@ -113,6 +112,7 @@ def load_vocabulary(hmm_dir):
     voc = []
     for line in file:
         voc.insert(len(voc), line.replace("\n", " "))
+    return voc
 
 
 def load(hmm_dir):

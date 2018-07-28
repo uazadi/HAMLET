@@ -26,7 +26,7 @@ def sampleQWERTY(char):
     prob = 0
     new_char = ''
     while(num > prob):
-        new_char = random.choice(string.ascii_letters + string.digits)
+        new_char = random.choice(string.ascii_letters + string.digits + " " + "_")
         x1 = keyboard[char]['x']
         y1 = keyboard[char]['y']
         x2 = keyboard[new_char]['x']

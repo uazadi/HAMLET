@@ -4,6 +4,7 @@ import string
 alphabet = set(string.ascii_letters + string.digits + ' ' + '#' + '@' + "'")
 
 observable = list(alphabet)
+observable.insert(0, "_")
 #observable = list(string.printable)
 
 file_name = '/home/umberto/Documents/HMMTweetChecker/' \
@@ -75,5 +76,6 @@ keyboard= {
     'B': {'y': 4.5, 'x': 5.5},
     'N': {'y': 4.5, 'x': 6.5},
     'M': {'y': 4.5, 'x': 7.5},
-    ' ': {'y': 5, 'x': 5}
+    ' ': {'y': 5, 'x': 5},
+    '_': {'y': 2.5, 'x': 5}  #just a symbol that will be sobstituted by ""
 }
