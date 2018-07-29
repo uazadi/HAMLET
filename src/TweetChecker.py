@@ -47,9 +47,9 @@ def __try_simple_scan(model, obs_states, word, voc):
         else:
             count = 0
 
-        print old_word + " " + str(obs) + " -> " \
-              + word + " " + str(states) \
-              + " | with prob: " + str(math.exp(prob))
+        #print old_word + " " + str(obs) + " -> " \
+        #      + word + " " + str(states) \
+        #      + " | with prob: " + str(math.exp(prob))
 
     return word
 
@@ -79,11 +79,15 @@ def __try_missing_letter(model, obs_states, word, voc):
     if bool(set(possible_words).intersection(set(voc))):
         possible_words = set(possible_words).intersection(set(voc))
 
-    return list(possible_words)
+    possible_word = max(set(possible_words), key=list(possible_words).count)
+
+    return possible_word
 
 
 def dull_check(tweet, model, obs_states, voc):
     new_tweet = ""
+
+    #print tweet
 
     list_word = str(tweet).split(" ")
 
@@ -91,16 +95,33 @@ def dull_check(tweet, model, obs_states, voc):
         word = word + " "
 
         first_correction = word
-        if(not(word in voc)):
+        if not(word in voc):
             first_correction = __try_simple_scan(model, obs_states, word, voc)
+            if first_correction[0:len(first_correction)-1].count(" ") > 0:
+                words = first_correction[0:len(first_correction)-1]
+                index = list_word.index(word[0:len(word)-1])
+                #list_word.remove(word[0:len(word)-1])
+                offset = 1
+                for w in words.split(" "):
+                    list_word.insert((index + offset), w)
+                    offset = offset + 1
+                continue
+
+
 
         second_correction = first_correction
-        if (not(first_correction in voc)):
+        if not(first_correction in voc):
             second_correction = __try_missing_letter(model, obs_states, word, voc)
-            second_correction = second_correction + __try_missing_letter(model, obs_states, first_correction, voc)
-            second_correction.insert(0, first_correction)
 
-        new_tweet = new_tweet + str(second_correction)
+        third_correction = second_correction
+        if not (second_correction in voc):
+            third_correction = __try_missing_letter(model, obs_states, first_correction, voc)
+
+
+        if not(third_correction in voc):
+            new_tweet = new_tweet + first_correction
+        else:
+            new_tweet = new_tweet + second_correction
 
     return new_tweet
 

@@ -25,6 +25,7 @@ def getVocabulary(tr_file, word_file):
     except ValueError:
         pass
 
+
     return voc
 
 if __name__ == '__main__':
