@@ -7,9 +7,6 @@ observable = list(alphabet)
 observable.insert(0, "_")
 #observable = list(string.printable)
 
-file_name = '/home/umberto/Documents/HMMTweetChecker/' \
-            'src/training_sets/TrainingFile.txt'
-
 keyboard= {
     '1': {'y': 1, 'x': 1},
     '2': {'y': 1, 'x': 2},

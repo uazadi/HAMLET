@@ -3,6 +3,7 @@ import HMMTrainer
 import TrainingFileCreator
 import TweetChecker
 import random
+import os
 from alignment.sequence import Sequence
 from alignment.vocabulary import Vocabulary
 from alignment.sequencealigner import SimpleScoring, GlobalSequenceAligner
@@ -12,21 +13,53 @@ file_name = path + "DownloadedTweet.txt"
 voc_name ="/home/umberto/Documents/HMMTweetChecker/src/vocabularies/Vocabulary.txt"
 
 
-def download_tweet():
-    print "Downloading BarackObama tweet...."
-    file1 = TweetDownloader.get_tweets("BarackObama", 5000)
+def download_tweet(training_tweet, testing_tweet):
+    lines = read_tweets(training_tweet, 5000)
+    shortest_source = min(lines, key=len)
+    select_trainig_tweet(lines, shortest_source, 51)
+    select_testing_tweet(lines, shortest_source, 51, testing_tweet)
 
-    print "Downloading NASA tweet...."
-    file2 = TweetDownloader.get_tweets("NASA", 5000)
 
-    print "Downloading CNN tweet...."
-    file3 = TweetDownloader.get_tweets("CNN", 5000)
+def select_testing_tweet(lines, shortest_source, num_for_testing, testing_tweet):
+    testing_only_lines = read_tweets(testing_tweet, 200)
+    testing_shortest_source = min(testing_only_lines, key=len)
+    with open('training_sets/TestingTweet.txt', 'wb') as outfile:
+        for i in range(len(shortest_source) - num_for_testing, len(shortest_source)):
+            for j in range(0, len(lines)):
+                outfile.write(lines[j][i] + "\n")
+        for i in range(0, len(testing_shortest_source)):
+            for j in range(0, len(testing_only_lines)):
+                outfile.write(testing_only_lines[j][i] + "\n")
 
-    filenames = [file1, file2, file3]
-    with open('training_sets/DownloadedTweet.txt', 'wb') as outfile:
-        for fname in filenames:
-            with open(fname) as infile:
-                outfile.write(infile.read())
+
+def read_tweets(training_tweet, num_of_tweets):
+    filenames = []
+    for name in training_tweet:
+        print "Downloading " + name + " tweets.."
+        file = TweetDownloader.get_tweets(name, num_of_tweets)
+        filenames.insert(len(filenames), file)
+    lines = []
+    for fname in filenames:
+        with open(fname) as infile:
+            lines.insert(len(lines), infile.read().split("\n"))
+    return lines
+
+
+def select_trainig_tweet(lines, shortest_source, num_for_testing):
+    with open('training_sets/TrainingTweet.txt', 'wb') as outfile:
+        for i in range(0, len(shortest_source) - num_for_testing):
+            for j in range(0, len(lines)):
+                outfile.write(lines[j][i] + "\n")
+
+
+def create_mispell_file(file_name, perc_of_error, misp_file_name):
+    tweet_file = open(file_name, 'r')
+    return TrainingFileCreator.createTrainingFile(tweet_file, perc_of_error, misp_file_name)
+
+def divide_testing_and_verify(file_name):
+    file_name = open(file_name, 'r')
+
+
 
 def create_train_and_test_file():
     tweet_file = open(file_name, 'r')
@@ -112,21 +145,6 @@ def test(model, testing_set_name, verify_test_file_name):
             wrong_sim.insert(len(wrong_sim), align_word(wrong[i-1], line))
             wrong_letters_similarity.insert(len(wrong_letters_similarity), align_char(wrong[i-1], line))
 
-            #str1 = min([line, ctweet], key=len)
-            #str2 = max([line, ctweet], key=len)
-            #str2_short = str2[0:len(str1)]
-            #hamming_distance = len(str2) - len(str1)
-
-            #hamming_distance = 1
-            #if len(line) == len(ctweet):
-            #    for ch1, ch2 in zip(line, ctweet):
-            #        if ch1 != ch2:
-            #            hamming_distance += 1
-            #else:
-            #    for w1, w2 in zip(line.split(" "), ctweet.split(" ")):
-            #        for ch1, ch2 in zip(w1, w2):
-            #            if ch1 != ch2:
-            #                hamming_distance += 1
 
     mean_letters_similarity = sum(letters_similarity)/len(letters_similarity)
     mean_word_sim = sum(word_sim)/len(word_sim)
@@ -155,14 +173,13 @@ def align_word(ctweet, line):
     alignment = v.decodeSequenceAlignment(encodeds[0])
     print "\n" + str(alignment)
     print 'Alignment score:', alignment.score
-    percOfIdetity = 0
-    if (str(alignment).replace(" ", "")[-1] == "-"):
-        percOfIdetity = (alignment.percentIdentity() * len(alignment)) / (len(alignment) + 1)
-        print 'Percent identity:', percOfIdetity
+    if str(alignment).replace(" ", "")[-1] == "-":
+        perc_of_identity = (alignment.percentIdentity() * len(alignment)) / (len(alignment) + 1)
+        print 'Percent identity:', perc_of_identity
     else:
-        percOfIdetity = alignment.percentIdentity()
+        perc_of_idetity = alignment.percentIdentity()
         print 'Percent identity:', alignment.percentIdentity()
-    return percOfIdetity
+    return perc_of_identity
 
 
 def align_char(ctweet, line):
@@ -182,31 +199,46 @@ def align_char(ctweet, line):
 
 
 if __name__ == '__main__':
-    #download_tweet()
-    (training_file_name, testing_file_name, verify_test_file_name) = create_train_and_test_file()
-    model = train(training_file_name)
+    #download_tweet(["BarackObama", "NASA", "CNN"], ["BillGates", "nytimes"])
 
-    s_testing = path + "small_testing_set.txt"
-    s_verify = path + "small_verify_testset.txt"
+    mispell_perc = [0.1, 0.2, 0.3, 0.4]
+    path_names = []
+    for i in [0.1, 0.2, 0.3, 0.4]:
+        mispell_path = path + "mispell_perc_" + str(int(i * 100)) + "/"
+        path_names.insert(len(path_names), mispell_path)
+        os.makedirs(mispell_path)
+        create_mispell_file(path + "TrainingTweet.txt", i, mispell_path + "/MispelledTrainingTweet.txt")
+        create_mispell_file(path + "TestingTweet.txt",  i, mispell_path + "/MispelledTestingTweet.txt")
 
-    letters_similarity, \
-    word_sim, \
-    mean_letters_similarity, \
-    mean_word_sim, \
-    wrong_letters_similarity, \
-    wrong_word_sim, \
-    mean_wrong_letters_similarity, \
-    mean_wrong_word_sim= test(model, s_testing, s_verify)
 
-    print "\n\nResults: "
-    print letters_similarity
-    print mean_letters_similarity
-    print "\n"
-    print wrong_letters_similarity
-    print mean_wrong_letters_similarity
-    print "\n"
-    print word_sim
-    print mean_word_sim
-    print "\n"
-    print wrong_word_sim
-    print mean_wrong_word_sim
+
+
+
+    #create_testing_file()
+    #(training_file_name, testing_file_name, verify_test_file_name) = create_train_and_test_file()
+    #model = train(training_file_name)
+
+    #s_testing = path + "small_testing_set.txt"
+    #s_verify = path + "small_verify_testset.txt"
+
+    #letters_similarity, \
+    #word_sim, \
+    #mean_letters_similarity, \
+    #mean_word_sim, \
+    #wrong_letters_similarity, \
+    #wrong_word_sim, \
+    #mean_wrong_letters_similarity, \
+    #mean_wrong_word_sim= test(model, s_testing, s_verify)
+
+    #print "\n\nResults: "
+    #print letters_similarity
+    #print mean_letters_similarity
+    #print "\n"
+    #print wrong_letters_similarity
+    #print mean_wrong_letters_similarity
+    #print "\n"
+    #print word_sim
+    #print mean_word_sim
+    #print "\n"
+    #print wrong_word_sim
+    #print mean_wrong_word_sim

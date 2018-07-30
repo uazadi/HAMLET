@@ -64,16 +64,27 @@ def get_tweets(screen_name, num_of_tweet):
 if __name__ == '__main__':
 
     print "Downloading BarackObama tweet...."
-    file1 = get_tweets("BarackObama", 5000)
+    file1 = get_tweets("BarackObama", 200)
 
     print "Downloading NASA tweet...."
-    file2 = get_tweets("NASA", 5000)
+    file2 = get_tweets("NASA", 200)
 
     print "Downloading CNN tweet...."
-    file3 = get_tweets("CNN", 5000)
+    file3 = get_tweets("CNN", 200)
 
+    i=0
+    lines= []
     filenames = [file1, file2, file3]
+    for fname in filenames:
+        with open(fname) as infile:
+            lines.insert(len(lines), infile.read().split("\n"))
+        i = i + 1
+
+    shortest_source = min(lines, key=len)
+
+    print shortest_source
+
     with open('training_sets/DownloadedTweet.txt', 'wb') as outfile:
-        for fname in filenames:
-            with open(fname) as infile:
-                outfile.write(infile.read())
+        for i in range(0, len(shortest_source)):
+            for j in range(0, len(lines)):
+                outfile.write(lines[j][i] + "\n")

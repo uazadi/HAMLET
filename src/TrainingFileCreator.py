@@ -7,7 +7,6 @@ import os.path
 import VocabularyExtractor
 import GlobalVar
 
-file_name = GlobalVar.file_name
 keyboard = GlobalVar.keyboard
 
 
@@ -56,12 +55,8 @@ def introduceError(line, percentageOfError):
 
     return new_line
 
-def getTrainingFile():
-    if os.path.isfile(file_name):
-        return file_name
-    return None
 
-def createTrainingFile(tweetsFile, percentageOfError):
+def createTrainingFile(tweetsFile, percentageOfError, file_name):
 
     with open(file_name, 'wb') as f:
         for line in tweetsFile:
