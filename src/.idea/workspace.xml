@@ -3,23 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="97dc7f5a-8d84-41a1-8d66-cb0df55aab8a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlobalVar.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobalVar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HMMTrainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/HMMTrainer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrainingFileCreator.py" beforeDir="false" afterPath="$PROJECT_DIR$/TrainingFileCreator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TweetDownloader.py" beforeDir="false" afterPath="$PROJECT_DIR$/TweetDownloader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training_sets/BarackObama_tweets.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/training_sets/CNN_tweets.txt" beforeDir="false" afterPath="$PROJECT_DIR$/training_sets/tweets_files/CNN_tweets.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training_sets/DownloadedTweet.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/training_sets/NASA_tweets.txt" beforeDir="false" afterPath="$PROJECT_DIR$/training_sets/tweets_files/NASA_tweets.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training_sets/TestingSet.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/training_sets/TrainingFile.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/training_sets/TrainingSet.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/training_sets/VerifyTestSet.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/training_sets/small_NASA.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/training_sets/small_testing_set.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/training_sets/small_verify_testset.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/training_sets/train.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/training_sets/try.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,35 +16,35 @@
     <session id="1093075601">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.10" value="3" />
-          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.11" value="3" />
           <entry key="project.open.time.12" value="1" />
-          <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.14" value="2" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="csv" value="11" />
-          <entry key="py" value="39" />
-          <entry key="txt" value="51" />
+          <entry key="py" value="40" />
+          <entry key="txt" value="53" />
           <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSV" value="11" />
-          <entry key="PLAIN_TEXT" value="51" />
-          <entry key="Python" value="39" />
+          <entry key="PLAIN_TEXT" value="53" />
+          <entry key="Python" value="40" />
           <entry key="XML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="13688" />
+          <entry key="py" value="15116" />
           <entry key="txt" value="2" />
           <entry key="xml" value="1" />
         </counts>
@@ -67,7 +52,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="13688" />
+          <entry key="Python" value="15116" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
@@ -75,19 +60,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="210" column="103" lean-forward="true" selection-start-line="210" selection-start-column="103" selection-end-line="210" selection-end-column="103" />
+            <state relative-caret-position="228">
+              <caret line="245" lean-forward="true" selection-start-line="245" selection-end-line="245" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
-                <marker date="1532971366287" expanded="true" signature="1401:1775" ph="..." />
-                <marker date="1532971366287" expanded="true" signature="2311:2352" ph="..." />
-                <marker date="1532971366287" expanded="true" signature="2385:2386" ph="..." />
-                <marker date="1532971366287" expanded="true" signature="3729:3730" ph="..." />
-                <marker date="1532971366287" expanded="true" signature="3729:3734" ph="..." />
-                <marker date="1532971366287" expanded="true" signature="3873:3874" ph="..." />
+                <marker date="1533138383098" expanded="true" signature="1414:1788" ph="..." />
+                <marker date="1533138383098" expanded="true" signature="2325:2363" ph="..." />
+                <marker date="1533138383098" expanded="true" signature="2388:2389" ph="..." />
+                <marker date="1533138383098" expanded="true" signature="2388:2393" ph="..." />
+                <marker date="1533138383098" expanded="true" signature="2532:2533" ph="..." />
+                <marker date="1533138383098" expanded="true" signature="4907:7217" ph="..." />
+                <marker date="1533138383098" expanded="true" signature="7246:7251" ph="..." />
               </folding>
             </state>
           </provider>
@@ -95,27 +81,36 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/training_sets/mispell_perc_10/MispelledTrainingTweet.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-213152" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/training_sets/mispell_perc_10/MispelledTestingTweet.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-14342" />
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HMMTrainer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="128" column="82" selection-start-line="128" selection-start-column="10" selection-end-line="128" selection-end-column="82" />
+            <state relative-caret-position="453">
+              <caret line="110" column="4" lean-forward="true" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="4" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-                <marker date="1532799128464" expanded="true" signature="2159:2164" ph="..." />
+                <marker date="1533135944425" expanded="true" signature="2159:2164" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/training_sets/TestingTweet.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2265">
+              <caret line="151" column="36" selection-start-line="151" selection-start-column="36" selection-end-line="151" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TweetChecker.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="213">
+              <caret line="102" column="17" selection-start-line="102" selection-start-column="17" selection-end-line="102" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -123,7 +118,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TrainingFileCreator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
+            <state relative-caret-position="780">
               <caret line="58" column="63" selection-start-line="58" selection-start-column="63" selection-end-line="58" selection-end-column="63" />
               <folding>
                 <element signature="e#18#31#0" expanded="true" />
@@ -136,7 +131,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CustomHMM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
+            <state relative-caret-position="1095">
               <caret line="75" column="32" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -217,7 +212,6 @@
         <option value="$PROJECT_DIR$/Prova.xml" />
         <option value="$PROJECT_DIR$/HMMLoader.py" />
         <option value="$PROJECT_DIR$/CustomHMM.py" />
-        <option value="$PROJECT_DIR$/HMMTrainer.py" />
         <option value="$PROJECT_DIR$/small_testing_set.txt" />
         <option value="$PROJECT_DIR$/training_sets/small_verify_testset.txt" />
         <option value="$PROJECT_DIR$/VocabularyExtractor.py" />
@@ -227,11 +221,12 @@
         <option value="$PROJECT_DIR$/GlobalVar.py" />
         <option value="$PROJECT_DIR$/TrainingFileCreator.py" />
         <option value="$PROJECT_DIR$/training_sets/TestingTweet.txt" />
+        <option value="$PROJECT_DIR$/HMMTrainer.py" />
         <option value="$PROJECT_DIR$/Main.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="449" />
     <option name="y" value="80" />
     <option name="width" value="1380" />
@@ -245,6 +240,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -265,13 +261,30 @@
             </path>
             <path>
               <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="training_sets" type="462c0819:PsiDirectoryNode" />
+              <item name="mispell_perc_20" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="training_sets" type="462c0819:PsiDirectoryNode" />
+              <item name="mispell_perc_30" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="training_sets" type="462c0819:PsiDirectoryNode" />
+              <item name="mispell_perc_40" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -435,7 +448,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
+    <frame x="0" y="25" width="1920" height="1055" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24986821" />
@@ -443,7 +456,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3091892" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3091892" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5416216" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -471,13 +484,7 @@
     <entry file="file://$PROJECT_DIR$/Vocabulary.txt" />
     <entry file="file://$PROJECT_DIR$/HMMUser.py" />
     <entry file="file://$PROJECT_DIR$/OldTry.py" />
-    <entry file="file://$PROJECT_DIR$/training_sets/small_NASA.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="28" selection-start-column="28" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/training_sets/small_NASA.txt" />
     <entry file="file://$PROJECT_DIR$/Prova.xml" />
     <entry file="file://$PROJECT_DIR$/filename.xml" />
     <entry file="file://$PROJECT_DIR$/vocabulary.csv" />
@@ -498,13 +505,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TrainingSet.txt" />
     <entry file="file://$PROJECT_DIR$/TestingSet.txt" />
-    <entry file="file://$PROJECT_DIR$/training_sets/small_verify_testset.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="49" column="101" selection-start-line="49" selection-start-column="101" selection-end-line="49" selection-end-column="101" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/training_sets/small_verify_testset.txt" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="902">
@@ -512,57 +513,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TweetChecker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1500">
-          <caret line="102" column="17" selection-start-line="102" selection-start-column="17" selection-end-line="102" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <marker date="1532876805444" expanded="true" signature="297:302" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training_sets/small_testing_set.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="45" column="4" selection-start-line="45" selection-end-line="45" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training_sets/VerifyTestSet.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training_sets/TrainingFile.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="794">
-          <caret line="16342" selection-start-line="16342" selection-end-line="16342" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training_sets/TrainingSet.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-96646" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training_sets/TestingSet.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-73037">
-          <caret column="63" selection-start-column="63" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/training_sets/small_testing_set.txt" />
+    <entry file="file://$PROJECT_DIR$/training_sets/VerifyTestSet.txt" />
+    <entry file="file://$PROJECT_DIR$/training_sets/TrainingFile.txt" />
+    <entry file="file://$PROJECT_DIR$/training_sets/TrainingSet.txt" />
+    <entry file="file://$PROJECT_DIR$/training_sets/TestingSet.txt" />
     <entry file="file://$PROJECT_DIR$/VocabularyExtractor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="26" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="e#18#27#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -590,13 +549,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/training_sets/DownloadedTweet.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="132" selection-start-column="132" selection-end-column="132" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/training_sets/DownloadedTweet.txt" />
     <entry file="file://$PROJECT_DIR$/training_sets/TrainingTweet.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-95117" />
@@ -621,46 +574,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/training_sets/TestingTweet.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4967">
-          <caret line="130" column="59" selection-start-line="130" selection-start-column="59" selection-end-line="154" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training_sets/MispelledTestingTweet_10.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training_sets/MispelledTestingTweet_40.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14342" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training_sets/MispelledTrainingTweet_10.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-213152" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training_sets/MispelledTestingTweet_30.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training_sets/MispelledTestingTweet_20.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HMMTrainer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="128" column="82" selection-start-line="128" selection-start-column="10" selection-end-line="128" selection-end-column="82" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <marker date="1532799128464" expanded="true" signature="2159:2164" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/training_sets/MispelledTestingTweet_10.txt" />
+    <entry file="file://$PROJECT_DIR$/training_sets/MispelledTestingTweet_40.txt" />
+    <entry file="file://$PROJECT_DIR$/training_sets/MispelledTrainingTweet_10.txt" />
+    <entry file="file://$PROJECT_DIR$/training_sets/MispelledTestingTweet_30.txt" />
+    <entry file="file://$PROJECT_DIR$/training_sets/MispelledTestingTweet_20.txt" />
     <entry file="file://$PROJECT_DIR$/TrainingFileCreator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
+        <state relative-caret-position="780">
           <caret line="58" column="63" selection-start-line="58" selection-start-column="63" selection-end-line="58" selection-end-column="63" />
           <folding>
             <element signature="e#18#31#0" expanded="true" />
@@ -671,7 +592,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CustomHMM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
+        <state relative-caret-position="1095">
           <caret line="75" column="32" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -679,30 +600,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main.py">
+    <entry file="file://$PROJECT_DIR$/TweetChecker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="210" column="103" lean-forward="true" selection-start-line="210" selection-start-column="103" selection-end-line="210" selection-end-column="103" />
+        <state relative-caret-position="213">
+          <caret line="102" column="17" selection-start-line="102" selection-start-column="17" selection-end-line="102" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HMMTrainer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="110" column="4" lean-forward="true" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="4" />
           <folding>
-            <element signature="e#0#22#0" expanded="true" />
-            <marker date="1532971366287" expanded="true" signature="1401:1775" ph="..." />
-            <marker date="1532971366287" expanded="true" signature="2311:2352" ph="..." />
-            <marker date="1532971366287" expanded="true" signature="2385:2386" ph="..." />
-            <marker date="1532971366287" expanded="true" signature="3729:3730" ph="..." />
-            <marker date="1532971366287" expanded="true" signature="3729:3734" ph="..." />
-            <marker date="1532971366287" expanded="true" signature="3873:3874" ph="..." />
+            <element signature="e#0#26#0" expanded="true" />
+            <marker date="1533135944425" expanded="true" signature="2159:2164" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/training_sets/mispell_perc_10/MispelledTrainingTweet.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-213152" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/training_sets/mispell_perc_10/MispelledTestingTweet.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14342" />
+        <state relative-caret-position="-14086" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training_sets/TestingTweet.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2265">
+          <caret line="151" column="36" selection-start-line="151" selection-start-column="36" selection-end-line="151" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training_sets/mispell_perc_10/MispelledTrainingTweet.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="245" lean-forward="true" selection-start-line="245" selection-end-line="245" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+            <marker date="1533138383098" expanded="true" signature="1414:1788" ph="..." />
+            <marker date="1533138383098" expanded="true" signature="2325:2363" ph="..." />
+            <marker date="1533138383098" expanded="true" signature="2388:2389" ph="..." />
+            <marker date="1533138383098" expanded="true" signature="2388:2393" ph="..." />
+            <marker date="1533138383098" expanded="true" signature="2532:2533" ph="..." />
+            <marker date="1533138383098" expanded="true" signature="4907:7217" ph="..." />
+            <marker date="1533138383098" expanded="true" signature="7246:7251" ph="..." />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>

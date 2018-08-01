@@ -108,7 +108,7 @@ if __name__ == '__main__':
     file_name = "/home/umberto/Documents/HMMTweetChecker/src/training_sets/DownloadedTweet.txt"
     voc_name ="/home/umberto/Documents/HMMTweetChecker/src/vocabularies/Vocabulary.txt"
 
-    #model = MMTrainer(file_name, voc_name).hmm
+    model = MMTrainer(file_name, voc_name).hmm
     #print model
     #model.save_hmm(None)
 
@@ -126,7 +126,7 @@ if __name__ == '__main__':
     test = "We cSn neveR trUly repSL te EHbt we Iwe our faJlen heroeZ But wd vanTremember them honortheir sacrificdJInQ arfirm"
     test = "Helo i m studing for the exams"
 
-    print TweetChecker.dull_check(test, model, model.obs_states, model.vocabulary).replace("[", "\n").replace("]", "\n")
-    #print TweetChecker.sentense_check(test, model, model.obs_states)
+    #print TweetChecker.dull_check(test, model, model.obs_states, model.vocabulary).replace("[", "\n").replace("]", "\n")
+    print TweetChecker.sentense_check(test, model, model.obs_states)
 
 

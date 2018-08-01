@@ -2,6 +2,7 @@ import TweetDownloader
 import HMMTrainer
 import TrainingFileCreator
 import TweetChecker
+import numpy
 import random
 import os
 from alignment.sequence import Sequence
@@ -56,46 +57,9 @@ def create_mispell_file(file_name, perc_of_error, misp_file_name):
     tweet_file = open(file_name, 'r')
     return TrainingFileCreator.createTrainingFile(tweet_file, perc_of_error, misp_file_name)
 
+
 def divide_testing_and_verify(file_name):
     file_name = open(file_name, 'r')
-
-
-
-def create_train_and_test_file():
-    tweet_file = open(file_name, 'r')
-    trainandtest_file_name = TrainingFileCreator.createTrainingFile(tweet_file, 0.2)
-
-    #size = 0
-    with open(trainandtest_file_name) as f:
-        size=len([0 for _ in f])
-
-    perc_of_training = 0.8
-    num_of_lines_for_training = int(size * perc_of_training)/2
-    even_range = [x for x in range(0, size) if x % 2 != 0]
-    indexes_for_training = random.sample(even_range, num_of_lines_for_training)
-
-    training_file_name = path + "TrainingSet.txt"
-    testing_file_name = path + "TestingSet.txt"
-    verify_test_file_name = path + "VerifyTestSet.txt"
-
-    trainandtest_file = open(trainandtest_file_name, 'r')
-    training_file = open(training_file_name, 'wb')
-    testing_file = open(testing_file_name, 'wb')
-    verify_test_file = open(verify_test_file_name, 'wb')
-
-    with open(trainandtest_file_name, 'r') as tandt:
-        line_index = 0
-        for line in tandt:
-            next_line = tandt.next()
-            if line_index in indexes_for_training:
-                training_file.write(line)
-                training_file.write(next_line)
-            else:
-                verify_test_file.write(line)
-                testing_file.write(next_line)
-            line_index = line_index + 1
-
-    return training_file_name, testing_file_name, verify_test_file_name
 
 def train(training_set):
     model = HMMTrainer.train_hmm(file_name, training_set, voc_name)
@@ -160,6 +124,76 @@ def test(model, testing_set_name, verify_test_file_name):
            mean_wrong_letters_similarity, \
            mean_wrong_sim
 
+def new_test(model, test_file_name, test_file_length):
+    test_file = open(test_file_name)
+    i = 0
+    list_ccci = []
+    list_ccwi = []
+    list_mcci = []
+    list_mcwi = []
+
+    for line in test_file:
+        correct_line = line.replace("\n", "")
+        mispelled_line = test_file.next().replace("\n", "")
+        i = i + 1
+        print "[" + str(i) + "/" + str(test_file_length) + "] Checking:\n\t " + mispelled_line
+        corrected_tweet = TweetChecker.dull_check(line, model, model.obs_states, model.vocabulary)
+
+        cc_char_identity = align_char(corrected_tweet, correct_line)
+        cc_word_identity = align_word(corrected_tweet, correct_line)
+        mc_char_identity = align_char(mispelled_line, correct_line)
+        mc_word_identity = align_word(mispelled_line, correct_line)
+
+        list_ccci.append(cc_char_identity)
+        list_ccwi.append(cc_word_identity)
+        list_mcci.append(mc_char_identity)
+        list_mcwi.append(mc_word_identity)
+
+    #arr_ccci = numpy.array(list_ccci)
+    #arr_ccwi = numpy.array(list_ccwi)
+    #arr_mcci = numpy.array(list_mcci)
+    #arr_mcwi = numpy.array(list_mcwi)
+
+    mean_ccci = numpy.mean(list_ccci)
+    mean_ccwi = numpy.mean(list_ccwi)
+    mean_mcci = numpy.mean(list_mcci)
+    mean_mcwi = numpy.mean(list_mcwi)
+
+    std_ccci = numpy.std(list_ccci)
+    std_ccwi = numpy.std(list_ccwi)
+    std_mcci = numpy.std(list_mcci)
+    std_mcwi = numpy.std(list_mcwi)
+
+    results_string = ""
+
+    results_string += ("<CORRECTED TWEET, CORRECT TWEET> CHARS IDENTITY:\n")
+    results_string += str( list_ccci + "\n")
+    results_string += str("\n\MEAN: " + mean_ccci)
+    results_string += str("\n\STD: " + std_ccci)
+    results_string += "\n\n"
+
+    results_string += ("<CORRECTED TWEET, CORRECT TWEET> WORDS IDENTITY:\n")
+    results_string += str(list_ccwi + "\n")
+    results_string += str("\n\MEAN: " + mean_ccwi)
+    results_string += str("\n\STD: " + std_ccwi)
+    results_string += "\n\n"
+
+    results_string += ("<MISPELLED TWEET, CORRECT TWEET> CHARS IDENTITY:\n")
+    results_string += str(list_mcci + "\n")
+    results_string += str("\n\MEAN: " + mean_mcci)
+    results_string += str("\n\STD: " + std_mcci)
+    results_string += "\n\n"
+
+    results_string += ("<MISPELLED TWEET, CORRECT TWEET> WORDS IDENTITY:\n")
+    results_string += str(list_mcwi + "\n")
+    results_string += str("\n\MEAN: " + mean_mcwi)
+    results_string += str("\n\STD: " + std_mcwi)
+    results_string += "\n\n"
+
+    return results_string
+
+
+
 
 def align_word(ctweet, line):
     a = Sequence(ctweet.split())
@@ -177,7 +211,7 @@ def align_word(ctweet, line):
         perc_of_identity = (alignment.percentIdentity() * len(alignment)) / (len(alignment) + 1)
         print 'Percent identity:', perc_of_identity
     else:
-        perc_of_idetity = alignment.percentIdentity()
+        perc_of_identity = alignment.percentIdentity()
         print 'Percent identity:', alignment.percentIdentity()
     return perc_of_identity
 
@@ -204,12 +238,29 @@ if __name__ == '__main__':
     mispell_perc = [0.1, 0.2, 0.3, 0.4]
     path_names = []
     for i in [0.1, 0.2, 0.3, 0.4]:
-        mispell_path = path + "mispell_perc_" + str(int(i * 100)) + "/"
+        mispell_path = path + "misspell_perc_" + str(int(i * 100)) + "/"
         path_names.insert(len(path_names), mispell_path)
         os.makedirs(mispell_path)
-        create_mispell_file(path + "TrainingTweet.txt", i, mispell_path + "/MispelledTrainingTweet.txt")
-        create_mispell_file(path + "TestingTweet.txt",  i, mispell_path + "/MispelledTestingTweet.txt")
+        create_mispell_file(path + "TrainingTweet.txt", i, mispell_path + "/MisspelledTrainingTweet.txt")
+        create_mispell_file(path + "TestingTweet.txt",  i, mispell_path + "/MisspelledTestingTweet.txt")
 
+    for path in path_names:
+        models = []
+        complete_file = open(path + "/MisspelledTrainingTweet.txt").readlines()
+        # tweet + mispelled_tweet = instance -> 1400 lines = 700 tweet
+        for i in range(1400, 14001, 1400):
+            name_training_set = path + "/TrainingFile_" + str(i) + ".txt"
+            sliced_file = open(name_training_set)
+            for line in complete_file[0:i]:
+                sliced_file.write(line)
+            models.append(train(name_training_set))
+
+        results_file = open(path + "Results")
+        i = 1400
+        for model in models:
+            results_file.write("_____________RESULTS FOR MODEL TRAINED WITH " + str(i/2) + " TWEETS_____________\n\n")
+            results_file.write(new_test(model, path + "/MisspelledTestingTweet.txt", 495))
+            results_file.write("________________________________________________________________________________\n\n")
 
 
 
