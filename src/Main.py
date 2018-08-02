@@ -10,7 +10,7 @@ from alignment.vocabulary import Vocabulary
 from alignment.sequencealigner import SimpleScoring, GlobalSequenceAligner
 
 path = "/home/umberto/Documents/HMMTweetChecker/src/training_sets/"
-file_name = path + "DownloadedTweet.txt"
+file_name = path + "TrainingTweet.txt"
 voc_name ="/home/umberto/Documents/HMMTweetChecker/src/vocabularies/Vocabulary.txt"
 
 
@@ -53,9 +53,9 @@ def select_trainig_tweet(lines, shortest_source, num_for_testing):
                 outfile.write(lines[j][i] + "\n")
 
 
-def create_mispell_file(file_name, perc_of_error, misp_file_name):
+def create_mispell_file(file_name, perc_of_error, misp_file_name, testing):
     tweet_file = open(file_name, 'r')
-    return TrainingFileCreator.createTrainingFile(tweet_file, perc_of_error, misp_file_name)
+    return TrainingFileCreator.createTrainingFile(tweet_file, perc_of_error, misp_file_name, testing)
 
 
 def divide_testing_and_verify(file_name):
@@ -137,16 +137,20 @@ def new_test(model, test_file_name, test_file_length):
         mispelled_line = test_file.next().replace("\n", "")
         i = i + 1
         print "[" + str(i) + "/" + str(test_file_length) + "] Checking:\n\t " + mispelled_line
-        corrected_tweet = TweetChecker.dull_check(line, model, model.obs_states, model.vocabulary)
+        corrected_tweet = TweetChecker.dull_check(mispelled_line, model, model.obs_states, model.vocabulary)
 
-        cc_char_identity = align_char(corrected_tweet, correct_line)
+        #print "Calulating allignment ccci..."
+        #cc_char_identity = align_char(corrected_tweet, correct_line)
+        print "Calulating allignment ccwi..."
         cc_word_identity = align_word(corrected_tweet, correct_line)
-        mc_char_identity = align_char(mispelled_line, correct_line)
+        #print "Calulating allignment mcci..."
+        #mc_char_identity = align_char(mispelled_line, correct_line)
+        print "Calulating allignment mcwi..."
         mc_word_identity = align_word(mispelled_line, correct_line)
 
-        list_ccci.append(cc_char_identity)
+        #list_ccci.append(cc_char_identity)
         list_ccwi.append(cc_word_identity)
-        list_mcci.append(mc_char_identity)
+        #list_mcci.append(mc_char_identity)
         list_mcwi.append(mc_word_identity)
 
     #arr_ccci = numpy.array(list_ccci)
@@ -154,46 +158,43 @@ def new_test(model, test_file_name, test_file_length):
     #arr_mcci = numpy.array(list_mcci)
     #arr_mcwi = numpy.array(list_mcwi)
 
-    mean_ccci = numpy.mean(list_ccci)
+    #mean_ccci = numpy.mean(list_ccci)
     mean_ccwi = numpy.mean(list_ccwi)
-    mean_mcci = numpy.mean(list_mcci)
+    #mean_mcci = numpy.mean(list_mcci)
     mean_mcwi = numpy.mean(list_mcwi)
 
-    std_ccci = numpy.std(list_ccci)
+    #std_ccci = numpy.std(list_ccci)
     std_ccwi = numpy.std(list_ccwi)
-    std_mcci = numpy.std(list_mcci)
+    #std_mcci = numpy.std(list_mcci)
     std_mcwi = numpy.std(list_mcwi)
 
     results_string = ""
 
-    results_string += ("<CORRECTED TWEET, CORRECT TWEET> CHARS IDENTITY:\n")
-    results_string += str( list_ccci + "\n")
-    results_string += str("\n\MEAN: " + mean_ccci)
-    results_string += str("\n\STD: " + std_ccci)
-    results_string += "\n\n"
+    #results_string += ("<CORRECTED TWEET, CORRECT TWEET> CHARS IDENTITY:\n")
+    #results_string += str( list_ccci + "\n")
+    #results_string += str("\n\MEAN: " + mean_ccci)
+    #results_string += str("\n\STD: " + std_ccci)
+    #results_string += "\n\n"
 
     results_string += ("<CORRECTED TWEET, CORRECT TWEET> WORDS IDENTITY:\n")
-    results_string += str(list_ccwi + "\n")
-    results_string += str("\n\MEAN: " + mean_ccwi)
-    results_string += str("\n\STD: " + std_ccwi)
+    results_string += str(list_ccwi) + "\n"
+    results_string += "\nMEAN: " + str(mean_ccwi)
+    results_string += "\nSTD: " + str(std_ccwi)
     results_string += "\n\n"
 
-    results_string += ("<MISPELLED TWEET, CORRECT TWEET> CHARS IDENTITY:\n")
-    results_string += str(list_mcci + "\n")
-    results_string += str("\n\MEAN: " + mean_mcci)
-    results_string += str("\n\STD: " + std_mcci)
-    results_string += "\n\n"
+    #results_string += ("<MISPELLED TWEET, CORRECT TWEET> CHARS IDENTITY:\n")
+    #results_string += str(list_mcci + "\n")
+    #results_string += str("\n\MEAN: " + mean_mcci)
+    #results_string += str("\n\STD: " + std_mcci)
+    #results_string += "\n\n"
 
     results_string += ("<MISPELLED TWEET, CORRECT TWEET> WORDS IDENTITY:\n")
-    results_string += str(list_mcwi + "\n")
-    results_string += str("\n\MEAN: " + mean_mcwi)
-    results_string += str("\n\STD: " + std_mcwi)
+    results_string += str(list_mcwi) + "\n"
+    results_string += "\nMEAN: " + str(mean_mcwi)
+    results_string += "\nSTD: " + str(std_mcwi)
     results_string += "\n\n"
 
     return results_string
-
-
-
 
 def align_word(ctweet, line):
     a = Sequence(ctweet.split())
@@ -205,14 +206,10 @@ def align_word(ctweet, line):
     aligner = GlobalSequenceAligner(scoring, -2)
     score, encodeds = aligner.align(aEncoded, bEncoded, backtrace=True)
     alignment = v.decodeSequenceAlignment(encodeds[0])
-    print "\n" + str(alignment)
-    print 'Alignment score:', alignment.score
     if str(alignment).replace(" ", "")[-1] == "-":
         perc_of_identity = (alignment.percentIdentity() * len(alignment)) / (len(alignment) + 1)
-        print 'Percent identity:', perc_of_identity
     else:
         perc_of_identity = alignment.percentIdentity()
-        print 'Percent identity:', alignment.percentIdentity()
     return perc_of_identity
 
 
@@ -226,9 +223,6 @@ def align_char(ctweet, line):
     aligner = GlobalSequenceAligner(scoring, -2)
     score, encodeds = aligner.align(aEncoded, bEncoded, backtrace=True)
     alignment = v.decodeSequenceAlignment(encodeds[0])
-    print alignment
-    print 'Alignment score:', alignment.score
-    print 'Percent identity:', alignment.percentIdentity()
     return alignment.percentIdentity()
 
 
@@ -240,24 +234,28 @@ if __name__ == '__main__':
     for i in [0.1, 0.2, 0.3, 0.4]:
         mispell_path = path + "misspell_perc_" + str(int(i * 100)) + "/"
         path_names.insert(len(path_names), mispell_path)
-        os.makedirs(mispell_path)
-        create_mispell_file(path + "TrainingTweet.txt", i, mispell_path + "/MisspelledTrainingTweet.txt")
-        create_mispell_file(path + "TestingTweet.txt",  i, mispell_path + "/MisspelledTestingTweet.txt")
+        if not os.path.exists(mispell_path):
+            os.makedirs(mispell_path)
+        create_mispell_file(path + "TrainingTweet.txt", i, mispell_path + "MisspelledTrainingTweet.txt", False)
+        create_mispell_file(path + "TestingTweet.txt",  i, mispell_path + "MisspelledTestingTweet.txt", True)
 
     for path in path_names:
         models = []
-        complete_file = open(path + "/MisspelledTrainingTweet.txt").readlines()
+        complete_file = open(path + "MisspelledTrainingTweet.txt").readlines()
         # tweet + mispelled_tweet = instance -> 1400 lines = 700 tweet
         for i in range(1400, 14001, 1400):
-            name_training_set = path + "/TrainingFile_" + str(i) + ".txt"
-            sliced_file = open(name_training_set)
-            for line in complete_file[0:i]:
-                sliced_file.write(line)
+            name_training_set = path + "TrainingFile_" + str(i) + ".txt"
+            sliced_file = open(name_training_set, 'w+')
+            sliced_file.write(complete_file[0].replace("\n", ""))
+            for line in complete_file[1:i]:
+                sliced_file.write("\n" + line.replace("\n", ""))
+            sliced_file.close()
             models.append(train(name_training_set))
 
-        results_file = open(path + "Results")
+        results_file = open(path + "Results.txt", 'w+')
         i = 1400
         for model in models:
+            model.save_hmm(path)
             results_file.write("_____________RESULTS FOR MODEL TRAINED WITH " + str(i/2) + " TWEETS_____________\n\n")
             results_file.write(new_test(model, path + "/MisspelledTestingTweet.txt", 495))
             results_file.write("________________________________________________________________________________\n\n")

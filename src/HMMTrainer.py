@@ -51,17 +51,17 @@ def get_emission_matrix(training_file_name):
     for i in range(0, len(alphabet)):
         matrix[i] = [1] * len(observable)
 
-    training = open(training_file_name)
-    for correct_tweet in training:
-        correct_tweet = TrainingFileCreator.parse(correct_tweet)
-        misspelled_tweet = parseObservation(training.next())
+    training = open(training_file_name, "rb").readlines()
+
+    for i in range(0, len(training), 2):
+        correct_tweet = TrainingFileCreator.parse(training[i].replace("\n", ""))
+        misspelled_tweet = parseObservation(training[i+1].replace("\n", ""))
 
         for i in range(0, len(correct_tweet)):
             raw = alphabet.index(correct_tweet[i])
             col = observable.index(misspelled_tweet[i])
             matrix[raw][col] = matrix[raw][col] + 1
 
-    training.close()
 
     for i in range(0, len(matrix)):
         den = sum(matrix[i])

@@ -56,13 +56,15 @@ def introduceError(line, percentageOfError):
     return new_line
 
 
-def createTrainingFile(tweetsFile, percentageOfError, file_name):
+def createTrainingFile(tweetsFile, percentageOfError, file_name, without_underscore):
 
-    with open(file_name, 'wb') as f:
+    with open(file_name, 'w+') as f:
         for line in tweetsFile:
             line = parse(line)
             f.write(line.replace("\n", "") + "\n")
             wrongLine = introduceError(line.replace("\n", ""), percentageOfError)
+            if without_underscore:
+                wrongLine = wrongLine.replace("_", "")
             f.write(wrongLine + "\n")
 
     return file_name
