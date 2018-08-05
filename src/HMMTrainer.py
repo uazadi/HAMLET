@@ -108,7 +108,7 @@ if __name__ == '__main__':
     file_name = "/home/umberto/Documents/HMMTweetChecker/src/training_sets/DownloadedTweet.txt"
     voc_name ="/home/umberto/Documents/HMMTweetChecker/src/vocabularies/Vocabulary.txt"
 
-    model = MMTrainer(file_name, voc_name).hmm
+    #model = HMMTrainer(file_name, voc_name).hmm
     #print model
     #model.save_hmm(None)
 

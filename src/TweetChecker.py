@@ -2,20 +2,27 @@ import VocabularyExtractor
 import GlobalVar
 from ghmm import *
 
+
 printable = GlobalVar.observable
 alphabet = list(GlobalVar.alphabet)
 
 
-def one_try_check(tweet, model, obs_states, voc):
+def parse(line):
+    line = re.sub('https?:[A-Za-z0-9/\.]+', '', line)
+    line = filter(lambda x: x in set(GlobalVar.alphabet), line)
+    return line
+
+def one_try_check(tweet, model):
     new_tweet = ""
+    tweet = parse(tweet)
     for word in str(tweet).split(" "):
         word = word + " "
-        if not(word in voc):
+        if not(word in model.vocabulary):
             chars = list(word)
-            for c in chars:
-                chars.insert(len(chars.index(c)+1), " ")
+            #for c in chars:
+            #    chars.insert(len(chars.index(c)+1), " ")
             obs = [printable.index(c)+1 for c in chars]
-            obs_seq = EmissionSequence(obs_states, obs)
+            obs_seq = EmissionSequence(model.obs_states, obs)
             [states, prob] = model.viterbi(obs_seq)
             new_chars = [alphabet[o] for o in states]
             new_word = ''.join(new_chars)
@@ -29,15 +36,15 @@ def one_try_check(tweet, model, obs_states, voc):
     return new_tweet
 
 
-def __try_simple_scan(model, obs_states, word, voc):
+def __try_simple_scan(model, word):
     count = 0
-    while not (word in voc) and count < 1:
+    while not (word in model.vocabulary) and count < 1:
 
         old_word = word
 
         chars = list(word)
         obs = [printable.index(c) + 1 for c in chars]
-        obs_seq = EmissionSequence(obs_states, obs)
+        obs_seq = EmissionSequence(model.obs_states, obs)
         [states, prob] = model.hmm.viterbi(obs_seq)
         new_chars = [alphabet[o] for o in states]
         word = ''.join(new_chars)
@@ -54,14 +61,14 @@ def __try_simple_scan(model, obs_states, word, voc):
     return word
 
 
-def __try_missing_letter(model, obs_states, word, voc):
+def __try_missing_letter(model, word):
     possible_words = []
     chars = list(word)
     count = 0
     i = 0
 
     #N.B not(<empty_set>) = true
-    while not(set(possible_words).intersection(set(voc))) and count < 1 and i < len(word)+1:
+    while not(set(possible_words).intersection(set(model.vocabulary))) and count < 1 and i < len(word)+1:
 
         spaced_chars = chars[:]
         #letter = alphabet.index(spaced_chars[i-1])
@@ -73,30 +80,27 @@ def __try_missing_letter(model, obs_states, word, voc):
 
         possible_words.insert(
             len(possible_words),
-            __try_simple_scan(model, obs_states, ''.join(spaced_chars), voc)
+            __try_simple_scan(model, ''.join(spaced_chars))
         )
 
-    if bool(set(possible_words).intersection(set(voc))):
-        possible_words = set(possible_words).intersection(set(voc))
+    if bool(set(possible_words).intersection(set(model.vocabulary))):
+        possible_words = set(possible_words).intersection(set(model.vocabulary))
 
     possible_word = max(set(possible_words), key=list(possible_words).count)
 
     return possible_word
 
 
-def dull_check(tweet, model, obs_states, voc):
+def dull_check(tweet, model):
     new_tweet = ""
-
-    #print tweet
-
+    tweet = parse(tweet)
     list_word = str(tweet).split(" ")
-
     for word in list_word:
         word = word + " "
 
         first_correction = word
-        if not(word in voc):
-            first_correction = __try_simple_scan(model, obs_states, word, voc)
+        if not(word in model.vocabulary):
+            first_correction = __try_simple_scan(model, word)
             if first_correction[0:len(first_correction)-1].count(" ") > 0:
                 words = first_correction[0:len(first_correction)-1]
                 index = list_word.index(word[0:len(word)-1])
@@ -110,15 +114,15 @@ def dull_check(tweet, model, obs_states, voc):
 
 
         second_correction = first_correction
-        if not(first_correction in voc):
-            second_correction = __try_missing_letter(model, obs_states, word, voc)
+        if not(first_correction in model.vocabulary):
+            second_correction = __try_missing_letter(model, word)
 
         third_correction = second_correction
-        if not (second_correction in voc):
-            third_correction = __try_missing_letter(model, obs_states, first_correction, voc)
+        if not (second_correction in model.vocabulary):
+            third_correction = __try_missing_letter(model, first_correction)
 
 
-        if not(third_correction in voc):
+        if not(third_correction in model.vocabulary):
             new_tweet = new_tweet + first_correction
         else:
             new_tweet = new_tweet + second_correction
@@ -128,11 +132,13 @@ def dull_check(tweet, model, obs_states, voc):
 
 
 
-def sentense_check(tweet, model, obs_states):
-    text = str(tweet).replace(" ", "")
+def sentense_check(tweet, model):
+    tweet = parse(tweet)
+    #text = str(tweet).replace(" ", "")
+    text = parse(tweet)
 
     obs = [printable.index(c) + 1 for c in text]
-    obs_seq = EmissionSequence(obs_states, obs)
+    obs_seq = EmissionSequence(model.obs_states, obs)
     [states, prob] = model.hmm.viterbi(obs_seq)
     new_chars = [alphabet[o] for o in states]
     new_tweet = ''.join(new_chars)

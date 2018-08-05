@@ -1,19 +1,13 @@
 #!/usr/bin/python
 import random
-import math
 import string
-import re
-import os.path
-import VocabularyExtractor
+import TweetChecker
 import GlobalVar
 
 keyboard = GlobalVar.keyboard
 
 
-def parse(line):
-    line = re.sub('https?:[A-Za-z0-9/\.]+', '', line)
-    line = filter(lambda x: x in set(VocabularyExtractor.alphabet), line)
-    return line
+
 
 def sampleChar():
     return random.choice(string.ascii_letters + string.digits)
@@ -60,7 +54,7 @@ def createTrainingFile(tweetsFile, percentageOfError, file_name, without_undersc
 
     with open(file_name, 'w+') as f:
         for line in tweetsFile:
-            line = parse(line)
+            line = TweetChecker.parse(line)
             f.write(line.replace("\n", "") + "\n")
             wrongLine = introduceError(line.replace("\n", ""), percentageOfError)
             if without_underscore:

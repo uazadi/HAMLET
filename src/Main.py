@@ -78,7 +78,7 @@ def new_test(model, test_file_name, test_file_length):
         mispelled_line = test_file.next().replace("\n", "")
         i = i + 1
         print "[" + str(i) + "/" + str(test_file_length) + "] Checking:\n\t " + mispelled_line
-        corrected_tweet = TweetChecker.dull_check(mispelled_line, model, model.obs_states, model.vocabulary)
+        corrected_tweet = TweetChecker.dull_check(mispelled_line, model)
 
         print "Calulating allignment ccci..."
         cc_char_identity = align_char(corrected_tweet, correct_line)
@@ -118,7 +118,7 @@ def new_test(model, test_file_name, test_file_length):
 
     results_string = ""
 
-    results_string += ("<CORRECTED TWEET, CORRECT TWEET> CHARS IDENTITY:\n")
+    results_string += "<CORRECTED TWEET, CORRECT TWEET> CHARS IDENTITY:\n"
     results_string += str(list_ccci) + "\n"
     results_string += "\nMEAN: " + str(mean_ccci)
     results_string += "\nSTD: " + str(std_ccci)
@@ -126,7 +126,7 @@ def new_test(model, test_file_name, test_file_length):
     results_string += "\nOTHER ACCOUNTS MEAN: " + str(others_mean_ccci)
     results_string += "\n\n"
 
-    results_string += ("<CORRECTED TWEET, CORRECT TWEET> CORRECT WORDS:\n")
+    results_string += "<CORRECTED TWEET, CORRECT TWEET> CORRECT WORDS:\n"
     results_string += str(list_ccwi) + "\n"
     results_string += "\nMEAN: " + str(mean_ccwi)
     results_string += "\nSTD: " + str(std_ccwi)
@@ -134,7 +134,7 @@ def new_test(model, test_file_name, test_file_length):
     results_string += "\nOTHER ACCOUNTS MEAN: " + str(others_mean_ccwi)
     results_string += "\n\n"
 
-    results_string += ("<MISPELLED TWEET, CORRECT TWEET> CHARS IDENTITY:\n")
+    results_string += "<MISPELLED TWEET, CORRECT TWEET> CHARS IDENTITY:\n"
     results_string += str(list_mcci) + "\n"
     results_string += "\nMEAN: " + str(mean_mcci)
     results_string += "\nSTD: " + str(std_mcci)
@@ -142,7 +142,7 @@ def new_test(model, test_file_name, test_file_length):
     results_string += "\nOTHER ACCOUNTS MEAN: " + str(others_mean_mcci)
     results_string += "\n\n"
 
-    results_string += ("<MISPELLED TWEET, CORRECT TWEET> CORRECT WORDS:\n")
+    results_string += "<MISPELLED TWEET, CORRECT TWEET> CORRECT WORDS:\n"
     results_string += str(list_mcwi) + "\n"
     results_string += "\nMEAN: " + str(mean_mcwi)
     results_string += "\nSTD: " + str(std_mcwi)
@@ -253,19 +253,20 @@ if __name__ == '__main__':
             sliced_file.close()
             models.append(train(name_training_set))
 
-        results_file = open(misspell_path + "Results.txt", 'w+')
-        i = num_tweet
-        for model in models:
-            hmm_folder = misspell_path + "HMM_" + str(i) + "/"
-            if not os.path.exists(hmm_folder):
-                os.makedirs(hmm_folder)
-            model.save_hmm(hmm_folder)
-            results_file.write("_____________RESULTS FOR MODEL TRAINED WITH " + str(i/2) + " TWEETS_____________\n\n")
-            results_file.write(new_test(model, misspell_path + "/MisspelledTestingTweet.txt", 10))
-            results_file.write("--------------------------------------------------------------------------------\n\n")
-            results_file.write(new_test(model, path + "/MisspelledTestingTweet.txt", 10))
-            results_file.write("________________________________________________________________________________\n\n")
-            i = i + num_tweet
+        with open(misspell_path + "Results.txt", 'w+') as results_file:
+            i = num_tweet
+            for model in models:
+                hmm_folder = misspell_path + "HMM_" + str(i) + "/"
+                if not os.path.exists(hmm_folder):
+                    os.makedirs(hmm_folder)
+                model.save_hmm(hmm_folder)
+                results_file.write("_____________RESULTS FOR MODEL TRAINED WITH " + str(i/2) + " TWEETS_____________\n\n")
+                results_file.write(new_test(model, misspell_path + "/MisspelledTestingTweet.txt", 10))
+                results_file.write("--------------------------------------------------------------------------------\n\n")
+                results_file.write(new_test(model, path + "/MisspelledTestingTweet.txt", 10))
+                results_file.write("________________________________________________________________________________\n\n")
+                i = i + num_tweet
+
 
 
 
