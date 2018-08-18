@@ -45,7 +45,7 @@ def parseObservation(line):
     return line
 
 
-def get_emission_matrix(training_file_name):
+def get_emission_matrix(training_file_name, max_identity_value):
 
     matrix = [1] * len(alphabet)
     for i in range(0, len(alphabet)):
@@ -54,7 +54,7 @@ def get_emission_matrix(training_file_name):
     training = open(training_file_name, "rb").readlines()
 
     for i in range(0, len(training), 2):
-        correct_tweet = TrainingFileCreator.parse(training[i].replace("\n", ""))
+        correct_tweet = TweetChecker.parse(training[i].replace("\n", ""))
         misspelled_tweet = parseObservation(training[i+1].replace("\n", ""))
 
         for i in range(0, len(correct_tweet)):
@@ -65,15 +65,17 @@ def get_emission_matrix(training_file_name):
 
     for i in range(0, len(matrix)):
         den = sum(matrix[i])
-        #if matrix[i][i] > den*0.5:
-        #matrix[i][i] = den*0.5
+        k = i + 1
+        if max_identity_value != 0 and matrix[i][k] > den*max_identity_value:
+            matrix[i][k] = den*max_identity_value
         matrix[i] = [float(j) / den for j in matrix[i]]
 
     return matrix
 
 def train_hmm(tweets_file_name,
               training_file_name,
-              voc_file_name):
+              voc_file_name,
+              max_identity_value):
     #tweet_file = open(tweets_file_name, 'r')
     #trainingFileName = TrainingFileCreator.createTrainingFile(tweet_file, 0.2)
 
@@ -83,7 +85,7 @@ def train_hmm(tweets_file_name,
 
     obs_states = IntegerRange(1, len(observable) + 1)
     transition_matrix = get_transition_matrix(vocabulary)
-    emission_matrix = get_emission_matrix(training_file_name)
+    emission_matrix = get_emission_matrix(training_file_name, max_identity_value)
     initial_probabilities = get_initial_probabilities(vocabulary)
     model = HMMFromMatrices(obs_states,
                             DiscreteDistribution(obs_states),

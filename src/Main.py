@@ -3,16 +3,11 @@ import HMMTrainer
 import TrainingFileCreator
 import TweetChecker
 import numpy
-import random
 import os
-from alignment.sequence import Sequence
-from alignment.vocabulary import Vocabulary
-from alignment.sequencealigner import SimpleScoring, GlobalSequenceAligner
 
 path = "/home/umberto/Documents/HMMTweetChecker/src/training_sets/"
 file_name = path + "TrainingTweet.txt"
 voc_name ="/home/umberto/Documents/HMMTweetChecker/src/vocabularies/Vocabulary.txt"
-
 
 def download_tweet(training_tweet, testing_tweet):
     lines = read_tweets(training_tweet, 5000)
@@ -61,8 +56,8 @@ def create_mispell_file(file_name, perc_of_error, misp_file_name, testing):
 def divide_testing_and_verify(file_name):
     file_name = open(file_name, 'r')
 
-def train(training_set):
-    model = HMMTrainer.train_hmm(file_name, training_set, voc_name)
+def train(training_set, max_identity_value):
+    model = HMMTrainer.train_hmm(file_name, training_set, voc_name, max_identity_value)
     return model
 
 def new_test(model, test_file_name, test_file_length):
@@ -225,6 +220,7 @@ if __name__ == '__main__':
     #download_tweet(["BarackObama", "NASA", "CNN"], ["BillGates", "nytimes"])
 
     misspell_perc = [0.1, 0.2, 0.3]
+    max_values =  [0.5, 0.75, 0]
     path_names = []
     for i in misspell_perc:
         misspell_path = path + "misspell_perc_" + str(int(i * 100)) + "/"
@@ -240,32 +236,40 @@ if __name__ == '__main__':
 
     num_tweet = 2800
 
+    models = []
     for misspell_path in path_names:
-        models = []
         complete_file = open(misspell_path + "MisspelledTrainingTweet.txt").readlines()
         # tweet + mispelled_tweet = instance -> 1400 lines = 700 tweet
         for i in range(num_tweet, 14001, num_tweet):
-            name_training_set = misspell_path + "TrainingFile_" + str(i) + ".txt"
-            sliced_file = open(name_training_set, 'w+')
-            sliced_file.write(complete_file[0].replace("\n", ""))
-            for line in complete_file[1:i]:
-                sliced_file.write("\n" + line.replace("\n", ""))
-            sliced_file.close()
-            models.append(train(name_training_set))
+            for mv in max_values:
+                name_training_set = misspell_path + "TrainingFile_" + str(i) + "_" + str(mv) + ".txt"
+                sliced_file = open(name_training_set, 'w+')
+                sliced_file.write(complete_file[0].replace("\n", ""))
+                for line in complete_file[1:i]:
+                    sliced_file.write("\n" + line.replace("\n", ""))
+                sliced_file.close()
+                models.append(train(name_training_set, mv))
+                print "===============================" + str(len(models))
 
         with open(misspell_path + "Results.txt", 'w+') as results_file:
             i = num_tweet
+            j = 0
+            print ">>>>>>>>>>>>>>>>> " + str(len(models))
             for model in models:
-                hmm_folder = misspell_path + "HMM_" + str(i) + "/"
+                hmm_folder = misspell_path + "HMM_" + str(i) + "_" + str(max_values[j%3]) + "/"
                 if not os.path.exists(hmm_folder):
                     os.makedirs(hmm_folder)
+                print ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + str(hmm_folder)
                 model.save_hmm(hmm_folder)
                 results_file.write("_____________RESULTS FOR MODEL TRAINED WITH " + str(i/2) + " TWEETS_____________\n\n")
                 results_file.write(new_test(model, misspell_path + "/MisspelledTestingTweet.txt", 10))
                 results_file.write("--------------------------------------------------------------------------------\n\n")
                 results_file.write(new_test(model, path + "/MisspelledTestingTweet.txt", 10))
                 results_file.write("________________________________________________________________________________\n\n")
-                i = i + num_tweet
+                j = j + 1
+                if j%3 == 2:
+                    i = i + num_tweet
+
 
 
 
