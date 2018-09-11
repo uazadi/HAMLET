@@ -5,8 +5,8 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
-import TweetChecker
-import CustomHMM
+from kivy.uix.spinner import Spinner
+from training import CustomHMM, TweetChecker
 
 Builder.load_string("""
 
@@ -69,7 +69,14 @@ Builder.load_string("""
                     root.manager.current = 'info'
                     
 <Options>
+    boxes: _boxes
     AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'bottom'
+        BoxLayout: 
+            orientation: 'vertical'
+            padding: 50
+            id: _boxes     
         BoxLayout: 
             Button:
                 size_hint: 0.375, .1
@@ -91,7 +98,14 @@ Builder.load_string("""
                     root.manager.current = 'info'
 
 <Information>
+    boxes: _boxes
     AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'bottom'
+        BoxLayout: 
+            orientation: 'vertical'
+            padding: 50
+            id: _boxes     
         BoxLayout: 
             Button:
                 size_hint: 0.375, .1
@@ -115,6 +129,8 @@ Builder.load_string("""
 """)
 
 hmm_path = "/home/umberto/Documents/HMMTweetChecker/src/"
+selected_hmm = "HMM_20"
+available_hmm = ('HMM_10', 'HMM_20', 'HMM_30')
 
 class TweetCheckerScreen(Screen):
     tweet_text = TextInput(multiline=True, font_size=16, markup=True)
@@ -154,13 +170,14 @@ class TweetCheckerScreen(Screen):
         self.boxes.add_widget(BoxLayout(orientation='horizontal'))
 
     def check(self):
-        model = CustomHMM.load(hmm_path + "training_sets/misspell_perc_20/HMM_11200/")
+        global selected_hmm
+        model = CustomHMM.load("./best_hmm/" + selected_hmm + "/")
 
         self.corrected_tweet.text = TweetChecker.dull_check(self.tweet_text.text, model)
         text = TweetChecker.parse(self.tweet_text.text)
         new_text = ""
         for word in str(self.tweet_text.text).split(" "):
-            if TweetChecker.parse(word) in text and not(word+" " in model.vocabulary):
+            if TweetChecker.parse(word) in text and not(word + " " in model.vocabulary):
                 new_text += "error(" + word + ") "
             else:
                 new_text += word + " "
@@ -209,17 +226,56 @@ class DictionatyScreen(Screen):
         self.boxes.add_widget(BoxLayout(orientation='horizontal'))
 
     def add(self):
+        global available_hmm
         words = str(self.wordsbox.text).replace("\n", "").replace(" ", "").split(";")
-        with open(hmm_path + "training_sets/misspell_perc_20/HMM_11200/vocabulary.txt", "a") as voc:
-            for word in words:
-                voc.write(word + "\n")
+
+        for hmm in available_hmm:
+            with open("./best_hmm/" + hmm + "/vocabulary.txt", "a") as voc:
+                for word in words:
+                    voc.write(word + "\n")
+
         self.wordsbox.text = ""
         self.ack_box.text = "The following words have been added:\n" + str(words)
 
+class CustomSpinner(Spinner):
+
+    def __init__(self, **kwargs):
+        super(CustomSpinner, self).__init__(**kwargs)
+
+    def _on_dropdown_select(self, instance, data, *largs):
+        self.text = data
+        global selected_hmm
+        selected_hmm = data
 
 class Options(Screen):
     def __init__(self, **kwargs):
         super(Options, self).__init__(**kwargs)
+        global available_hmm
+
+        bx1 = BoxLayout(orientation='horizontal')
+
+        message = "Choose the HMM that you would like to use:"
+        header_message = Label(text=message, font_size=20)
+        bx1.add_widget(header_message)
+
+        spinner = CustomSpinner(
+            # default value shown
+            text='HMM_20',
+            # available values
+            values=available_hmm,
+            # just for positioning in our example
+            size_hint=(None, None),
+            size=(200, 44),
+            pos_hint={'center_x': .5, 'center_y': .5},
+        )
+
+
+        bx1.add_widget(spinner)
+
+        self.boxes.add_widget(bx1)
+
+
+
 
 class Information(Screen):
     def __init__(self, **kwargs):

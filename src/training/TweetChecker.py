@@ -1,4 +1,3 @@
-import VocabularyExtractor
 import GlobalVar
 from ghmm import *
 

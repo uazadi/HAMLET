@@ -1,11 +1,9 @@
 import string
 
-#alphabet = set(string.ascii_letters + string.digits + '!"*$%&/()=?^' + "'|[]{}@#+;:*,.-;:_<>" + ' ')
 alphabet = set(string.ascii_letters + string.digits + ' ' + '#' + '@' + "'")
 
 observable = list(alphabet)
 observable.insert(0, "_")
-#observable = list(string.printable)
 
 keyboard= {
     '1': {'y': 1, 'x': 1},

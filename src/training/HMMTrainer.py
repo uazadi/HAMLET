@@ -1,4 +1,3 @@
-import TrainingFileCreator
 import VocabularyExtractor
 import TweetChecker
 import CustomHMM as HMMFile
@@ -9,11 +8,6 @@ from ghmm import *
 
 alphabet = list(GlobalVar.alphabet)
 observable = GlobalVar.observable
-
-#class HMMTrainer:
-
-#def __init__( tweets_file_name, voc_file_name):
-    #self.hmm = self.train_hmm(tweets_file_name, voc_file_name)
 
 def get_initial_probabilities(voc):
     vector = [1] * len(alphabet)

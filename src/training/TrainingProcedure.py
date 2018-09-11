@@ -1,7 +1,4 @@
-import TweetDownloader
-import HMMTrainer
-import TrainingFileCreator
-import TweetChecker
+import HMMTrainer, TweetDownloader, TrainingFileCreator, TweetChecker
 import numpy
 import os
 
@@ -94,7 +91,7 @@ def new_test(model, test_file_name, test_file_length):
     mean_mcci = numpy.mean(list_mcci)
     mean_mcwi = numpy.mean(list_mcwi)
 
-    first_not_account_index = 5
+    first_not_account_index = 135
 
     accounts_mean_ccci = numpy.mean(list_ccci[:first_not_account_index])
     accounts_mean_ccwi = numpy.mean(list_ccwi[:first_not_account_index])
@@ -168,27 +165,6 @@ def count_correct_words(mtweet, ctweet):
 
     return correct_word / float(len(ctweet))
 
-    #for i in ctweet.split(" "):
-    #    for j in line.split(" "):
-    #        if i == j:
-    #            corrected_word
-
-    #a = Sequence(ctweet.split())
-    #b = Sequence(line.split())
-    #v = Vocabulary()
-    #aEncoded = v.encodeSequence(a)
-    #bEncoded = v.encodeSequence(b)
-    #scoring = SimpleScoring(2, -2)
-    #aligner = GlobalSequenceAligner(scoring, -1)
-    #score, encodeds = aligner.align(aEncoded, bEncoded, backtrace=True)
-    #alignment = v.decodeSequenceAlignment(encodeds[0])
-    #print alignment
-    #if str(alignment).replace(" ", "")[-1] == "-":
-    #    perc_of_identity = (alignment.percentIdentity() * len(alignment)) / (len(alignment) + 1)
-    #else:
-    #    perc_of_identity = alignment.percentIdentity()
-    #return corrected_word/float(len(line))
-
 
 def align_char(mtweet, line):
     mtweet = mtweet.replace(" ", "")
@@ -204,16 +180,6 @@ def align_char(mtweet, line):
 
     return (matched_chars*2)/float(len(mtweet) + len(line))
 
-    #a = Sequence(list(ctweet))
-    #b = Sequence(list(line))
-    #v = Vocabulary()
-    #aEncoded = v.encodeSequence(a)
-    #bEncoded = v.encodeSequence(b)
-    #scoring = SimpleScoring(2, -10)
-    #aligner = GlobalSequenceAligner(scoring, -2)
-    #score, encodeds = aligner.align(aEncoded, bEncoded, backtrace=True)
-    #alignment = v.decodeSequenceAlignment(encodeds[0])
-    #return alignment.percentIdentity()
 
 
 if __name__ == '__main__':
@@ -249,57 +215,26 @@ if __name__ == '__main__':
                     sliced_file.write("\n" + line.replace("\n", ""))
                 sliced_file.close()
                 models.append(train(name_training_set, mv))
-                print "===============================" + str(len(models))
 
         with open(misspell_path + "Results.txt", 'w+') as results_file:
             i = num_tweet
             j = 0
-            print ">>>>>>>>>>>>>>>>> " + str(len(models))
             for model in models:
                 hmm_folder = misspell_path + "HMM_" + str(i) + "_" + str(max_values[j%3]) + "/"
                 if not os.path.exists(hmm_folder):
                     os.makedirs(hmm_folder)
-                print ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + str(hmm_folder)
                 model.save_hmm(hmm_folder)
                 results_file.write("_____________RESULTS FOR MODEL TRAINED WITH " + str(i/2) + " TWEETS_____________\n\n")
-                results_file.write(new_test(model, misspell_path + "/MisspelledTestingTweet.txt", 10))
+                results_file.write(new_test(model, misspell_path + "/MisspelledTestingTweet.txt", 300))
                 results_file.write("--------------------------------------------------------------------------------\n\n")
-                results_file.write(new_test(model, path + "/MisspelledTestingTweet.txt", 10))
+                results_file.write(new_test(model, path + "/MisspelledTestingTweet.txt", 300))
                 results_file.write("________________________________________________________________________________\n\n")
-                j = j + 1
                 if j%3 == 2:
                     i = i + num_tweet
+                j = j + 1
 
 
 
 
 
 
-    #create_testing_file()
-    #(training_file_name, testing_file_name, verify_test_file_name) = create_train_and_test_file()
-    #model = train(training_file_name)
-
-    #s_testing = path + "small_testing_set.txt"
-    #s_verify = path + "small_verify_testset.txt"
-
-    #letters_similarity, \
-    #word_sim, \
-    #mean_letters_similarity, \
-    #mean_word_sim, \
-    #wrong_letters_similarity, \
-    #wrong_word_sim, \
-    #mean_wrong_letters_similarity, \
-    #mean_wrong_word_sim= test(model, s_testing, s_verify)
-
-    #print "\n\nResults: "
-    #print letters_similarity
-    #print mean_letters_similarity
-    #print "\n"
-    #print wrong_letters_similarity
-    #print mean_wrong_letters_similarity
-    #print "\n"
-    #print word_sim
-    #print mean_word_sim
-    #print "\n"
-    #print wrong_word_sim
-    #print mean_wrong_word_sim
