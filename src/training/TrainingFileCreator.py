@@ -3,6 +3,7 @@ import random
 import string
 import TweetChecker
 import GlobalVar
+import math
 
 keyboard = GlobalVar.keyboard
 
@@ -24,7 +25,7 @@ def sampleQWERTY(char):
         y1 = keyboard[char]['y']
         x2 = keyboard[new_char]['x']
         y2 = keyboard[new_char]['y']
-        dist = ((x1-x2)**2) + ((y1 - y2)**2)
+        dist = math.sqrt(((x1-x2)**2) + ((y1 - y2)**2))
         #print dist
         if(dist <= 1):
             break
