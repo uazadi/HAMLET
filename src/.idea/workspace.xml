@@ -2,8 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97dc7f5a-8d84-41a1-8d66-cb0df55aab8a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training/TrainingFileCreator.py" beforeDir="false" afterPath="$PROJECT_DIR$/training/TrainingFileCreator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/best_hmm/HMM_10/emission_matrix.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/best_hmm/HMM_10/initial_probabilities.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/best_hmm/HMM_10/transition_matrix.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/best_hmm/HMM_10/vocabulary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/best_hmm/HMM_20/emission_matrix.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/best_hmm/HMM_20/initial_probabilities.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/best_hmm/HMM_20/transition_matrix.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/best_hmm/HMM_20/vocabulary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/best_hmm/HMM_30/emission_matrix.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/best_hmm/HMM_30/initial_probabilities.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/best_hmm/HMM_30/transition_matrix.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/best_hmm/HMM_30/vocabulary.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,6 +75,36 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-290028749">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="md" value="1" />
+          <entry key="py" value="979" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Markdown" value="1" />
+          <entry key="Python" value="979" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="md" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Markdown" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -85,11 +126,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/training/TrainingFileCreator.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="284">
-              <caret line="19" column="12" lean-forward="true" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+              <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
               <folding>
                 <element signature="e#18#31#0" expanded="true" />
               </folding>
@@ -97,12 +138,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/training/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="150">
-                <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+              <first_editor>
+                <caret selection-end-line="10" selection-end-column="28" />
               </first_editor>
               <second_editor />
             </state>
@@ -121,8 +162,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+            <state relative-caret-position="318">
+              <caret line="329" column="29" selection-start-line="329" selection-start-column="29" selection-end-line="329" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+                <marker date="1537799157966" expanded="true" signature="9722:9768" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -130,8 +175,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/training/TweetChecker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1">
-              <caret column="16" lean-forward="true" selection-start-column="16" selection-end-column="16" />
+            <state>
+              <caret column="16" selection-start-column="16" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -139,7 +184,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/training/CustomHMM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="14">
+            <state relative-caret-position="15">
               <caret line="1" column="9" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="9" />
             </state>
           </provider>
@@ -161,7 +206,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>investigating</find>
       <find>microgravityTo</find>
       <find>wood</find>
       <find>the</find>
@@ -191,6 +235,7 @@
       <find>Exc</find>
       <find>0.7067456427857125</find>
       <find>0.17421079888631597</find>
+      <find>hmm_path</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -239,7 +284,6 @@
         <option value="$PROJECT_DIR$/HMMTrainer.py" />
         <option value="$PROJECT_DIR$/training_sets/TestingTweet.txt" />
         <option value="$PROJECT_DIR$/ResultsParser.py" />
-        <option value="$PROJECT_DIR$/GUI.py" />
         <option value="$PROJECT_DIR$/Main.py" />
         <option value="$PROJECT_DIR$/training/__init__.py" />
         <option value="$PROJECT_DIR$/training/TweetChecker.py" />
@@ -249,6 +293,8 @@
         <option value="$PROJECT_DIR$/training/README.md" />
         <option value="$PROJECT_DIR$/__init__.py" />
         <option value="$PROJECT_DIR$/training/TrainingFileCreator.py" />
+        <option value="$PROJECT_DIR$/GUI.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -266,6 +312,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -286,11 +333,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/ThirdProject" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -462,7 +508,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32972974" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.27027026" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.26702702" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.37405404" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -480,7 +526,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/training_sets/MispelledTestingTweet_10.txt" />
     <entry file="file://$PROJECT_DIR$/training_sets/MispelledTestingTweet_40.txt" />
     <entry file="file://$PROJECT_DIR$/training_sets/MispelledTrainingTweet_10.txt" />
     <entry file="file://$PROJECT_DIR$/training_sets/MispelledTestingTweet_30.txt" />
@@ -532,35 +577,15 @@
     <entry file="file://$PROJECT_DIR$/training_sets/misspell_perc_10/HMM_2800_0/emission_matrix.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/tweets_files/BarackObama_tweets.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tweets_files/CNN_tweets.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2115">
-          <caret line="141" selection-start-line="141" selection-end-line="141" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tweets_files/NASA_tweets.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7935">
-          <caret line="529" column="189" selection-start-line="529" selection-start-column="189" selection-end-line="529" selection-end-column="189" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tweets_files/BarackObama_tweets.txt" />
+    <entry file="file://$PROJECT_DIR$/tweets_files/CNN_tweets.txt" />
+    <entry file="file://$PROJECT_DIR$/tweets_files/NASA_tweets.txt" />
     <entry file="file://$PROJECT_DIR$/training_sets/TrainingTweet.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/tweets_files/nytimes_tweets.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tweets_files/BillGates_tweets.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tweets_files/TrainingTweet.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tweets_files/nytimes_tweets.txt" />
+    <entry file="file://$PROJECT_DIR$/tweets_files/BillGates_tweets.txt" />
+    <entry file="file://$PROJECT_DIR$/tweets_files/TrainingTweet.txt" />
     <entry file="file://$PROJECT_DIR$/training_sets/TestingTweet.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2025">
@@ -578,9 +603,7 @@
     <entry file="file://$PROJECT_DIR$/training/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/tweets_files/TestingTweet.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tweets_files/TestingTweet.txt" />
     <entry file="file://$PROJECT_DIR$/training/TweetDownloader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -602,47 +625,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/training/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="150">
-            <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ResultsParser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training/CustomHMM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
-          <caret line="1" column="9" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/training/TweetChecker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <caret column="16" lean-forward="true" selection-start-column="16" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/training/GlobalVar.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -657,13 +639,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ResultsParser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training/TweetChecker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training/CustomHMM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="9" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/training/TrainingFileCreator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="284">
-          <caret line="19" column="12" lean-forward="true" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
           <folding>
             <element signature="e#18#31#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="329" column="29" selection-start-line="329" selection-start-column="29" selection-end-line="329" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+            <marker date="1537799157966" expanded="true" signature="9722:9768" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor>
+            <caret selection-end-line="10" selection-end-column="28" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

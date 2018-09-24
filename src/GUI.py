@@ -1,3 +1,4 @@
+import webbrowser, os
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.label import Label
@@ -128,7 +129,6 @@ Builder.load_string("""
 
 """)
 
-hmm_path = "/home/umberto/Documents/HMMTweetChecker/src/"
 selected_hmm = "HMM_20"
 available_hmm = ('HMM_10', 'HMM_20', 'HMM_30')
 
@@ -171,7 +171,7 @@ class TweetCheckerScreen(Screen):
 
     def check(self):
         global selected_hmm
-        model = CustomHMM.load("./best_hmm/" + selected_hmm + "/")
+        model = CustomHMM.load("./best_hmms/" + selected_hmm + "/")
 
         self.corrected_tweet.text = TweetChecker.dull_check(self.tweet_text.text, model)
         text = TweetChecker.parse(self.tweet_text.text)
@@ -230,7 +230,7 @@ class DictionatyScreen(Screen):
         words = str(self.wordsbox.text).replace("\n", "").replace(" ", "").split(";")
 
         for hmm in available_hmm:
-            with open("./best_hmm/" + hmm + "/vocabulary.txt", "a") as voc:
+            with open("./best_hmms/" + hmm + "/vocabulary.txt", "a") as voc:
                 for word in words:
                     voc.write(word + "\n")
 
@@ -274,12 +274,76 @@ class Options(Screen):
 
         self.boxes.add_widget(bx1)
 
+#class UrlLink(Label):
+#    def __init__(self, **kwargs):
+#        super(UrlLink, self).__init__(**kwargs)
+
+ #   def on_touch_down(self, touch):
+ #       #webbrowser.open("https://www.linkedin.com/in/umberto-azadi-26b431135/")
+ #       os.system("start \"\" https://www.linkedin.com/in/umberto-azadi-26b431135/")
+
+
+class Link(Label):
+    def __init__(self, type, **kwargs):
+        super(Link, self).__init__(**kwargs)
+        self.type = type
+
+    def on_touch_down(self, touch):
+        if self.type == "pdf":
+            webbrowser.open(r'file:' + os.path.realpath("./../docs/Report.pdf"))
+        if self.type == "url":
+            webbrowser.open("https://www.linkedin.com/in/umberto-azadi-26b431135/")
 
 
 
 class Information(Screen):
     def __init__(self, **kwargs):
         super(Information, self).__init__(**kwargs)
+        bx1 = BoxLayout(orientation='horizontal')
+        bx2 = BoxLayout(orientation='horizontal')
+        bx3 = BoxLayout(orientation='horizontal')
+
+
+        message = "For any further information about this project please see: "
+        header_message = Label(text=message, font_size=18)
+        #link = Link("pdf", text=pdf_name, font_size=20, color=[0, 0.5, 1, 1])
+        link = Button(
+            text="Report.pdf",
+            font_size=20,
+            on_press=lambda a:webbrowser.open(r'file:' + os.path.realpath("./../docs/Report.pdf")),
+            size_hint=(0.5, 1)
+        )
+
+        message1 = "For any further information about the developer: "
+        header_message1 = Label(text=message1, font_size=18)
+        link1 = Button(
+            text="Umberto Azadi",
+            font_size=20,
+            on_press=lambda a:webbrowser.open("https://www.linkedin.com/in/umberto-azadi-26b431135/"),
+            size_hint=(0.5, 1)
+        )
+
+        github = Button(
+            text="GitHub Repository",
+            font_size=20,
+            on_press=lambda a: webbrowser.open("https://github.com/uazadi/OMIT"),
+            size_hint=(0.5, 1)
+        )
+
+
+        bx1.add_widget(header_message)
+        bx1.add_widget(link)
+        bx2.add_widget(header_message1)
+        bx2.add_widget(link1)
+        bx3.add_widget(github)
+
+        self.boxes.add_widget(BoxLayout(orientation='horizontal'))
+        self.boxes.add_widget(bx1)
+        self.boxes.add_widget(BoxLayout(orientation='horizontal'))
+        self.boxes.add_widget(bx2)
+        self.boxes.add_widget(BoxLayout(orientation='horizontal'))
+        self.boxes.add_widget(bx3)
+        self.boxes.add_widget(BoxLayout(orientation='horizontal'))
 
 sm = ScreenManager()
 sm.add_widget(TweetCheckerScreen(name='tweet'))
