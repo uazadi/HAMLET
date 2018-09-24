@@ -10,4 +10,4 @@ Specifically, it has been shared through this repository:
 
 For any further information about the training procedure and the GUI check out the [Report.pdf](https://github.com/uazadi/OMIT/blob/master/docs/Report.pdf)
 
-
+___(N.B. this code has been tested only on Ubuntu 18.04 LTS)___
