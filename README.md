@@ -1,4 +1,4 @@
-# OMIT (tOol for aUtomating daTa anaLysis IN wEka)
+# OMIT #
 ### hmm-based cOrrection of MIsspelled Tweets ###
 
 This software aims to an Hidden Markov Model that is able to correct the spelling error in small sentences, as for example tweets.
