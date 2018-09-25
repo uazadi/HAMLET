@@ -1,7 +1,7 @@
 # OMIT #
 ### hmm-based cOrrection of MIsspelled Tweets ###
 
-This software aims to an Hidden Markov Model that is able to correct the spelling error in small sentences, as for example tweets.
+This software aims to train an Hidden Markov Model that is able to correct the spelling error in small sentences, as for example tweets.
 
 Specifically, it has been shared through this repository:
 * the training procedure used to estimate the three matrices that characterize an HHM; ([available here](https://github.com/uazadi/OMIT/blob/master/src/training/))
