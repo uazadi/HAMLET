@@ -1,5 +1,5 @@
-# OMIT #
-### hmm-based cOrrection of MIsspelled Tweets ###
+# HOMIT #
+### Hmm-based cOrrection of MIsspelled Tweets ###
 
 This software aims to train an Hidden Markov Model that is able to correct the spelling error in small sentences, as for example tweets.
 
