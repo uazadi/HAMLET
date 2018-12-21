@@ -2,6 +2,7 @@
 ### Hmm-based cOrrection of MIsspelled Tweets ###
 
 [![codebeat badge](https://codebeat.co/badges/b306469a-7f46-4ccb-a4f7-6006a1363ab9)](https://codebeat.co/projects/github-com-uazadi-homit-master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c9a0003d3e5a4753ac89f6653866afb0)](https://www.codacy.com/app/u.azadi/TrenOra?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=uazadi/TrenOra&amp;utm_campaign=Badge_Grade)
 
 This software aims to train an Hidden Markov Model that is able to correct the spelling error in small sentences, as for example tweets.
 
